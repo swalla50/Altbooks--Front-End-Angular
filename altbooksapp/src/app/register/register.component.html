@@ -1,0 +1,42 @@
+<div class="register" [ngStyle]="{backgroundImage:'url(../assets/images/bookkeepingbackground.jpeg)', backgroundSize: 'cover', height: '100vh'}">
+    <a class='back-btn-login' href="/">
+        <fa-icon [icon]="faArrowCircleLeft" size="3x"></fa-icon>
+    </a>
+    <div  class='login-container'>
+    <form autoComplete='off' >
+        <img class='altbook-logo' src = "assets/images/altbookwithtext.png" />
+
+        <div class='form-input-container'>
+            <label> Please enter a user name: </label>
+            <input label="Username" required name="username" type ="text"id="my-input"/>
+            
+            <label className='password-label'> Please enter a password: </label>
+            <input label ="Password" required  name="password" type ="password"id="my-input"/>
+            
+            <label > Please enter your first name: </label>
+            <input label="First Name"  required name="firstName" type ="text" id="my-input"/>
+            
+            <label > Please enter your last name: </label>
+            <input label="Last Name" required name="lastName" type="text" id="my-input" />
+
+            <label > Please enter your Date of Birth </label>
+            <input label="Date of Birth" required name="DoB" type="date" id="my-input"/>
+
+            <label > Please enter the name of your organization: </label>
+            <input label= "Organization" required  name="organization" type="text" id="my-input"/>
+
+            <label > Please select the organization type below that applies: </label>
+            <select  id="org-type" name="organizationType" required >
+                <option value="Finance">--Organization Type--</option>
+                <option value="Finance">Finance</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Law">Law</option>
+            </select>
+
+            <input type="checkbox" required />
+        </div>
+        
+        <button   type="submit"  class='register-btn'> SUBMIT </button>
+    </form>
+</div>
+</div>

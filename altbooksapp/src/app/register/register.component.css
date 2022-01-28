@@ -1,0 +1,114 @@
+.form-input-container {
+    height: 35vh;
+    display: grid;
+    overflow-y: scroll;
+    padding: 10%;
+}
+form {
+    width: 100%;
+    padding:5%;
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: #313030;
+    box-shadow: 0 25px 15px 0 rgb(0 0 0 / 45%);
+    color: white;
+    transform: translateY(-60%);
+    opacity: 100%;
+}
+
+
+input#profile-photo-inpt {
+    height: 50px;
+}
+
+select#org-type {
+    height: 40px;
+    border-radius: 15px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 50px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 50px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 50px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1976d2; 
+  }
+
+  a.register-btn {
+    margin-top: 5px;
+  }
+
+  a.back-btn-login {
+    display: block;
+    transform: translate(450%, 450%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    background: #313030;
+    box-shadow: 0 25px 15px 0 rgb(0 0 0 / 45%);
+    opacity: 90%;
+}
+
+
+svg.svg-inline--fa.fa-arrow-circle-left.fa-w-16{
+    overflow: visible;
+    color: #1976d2;
+    box-shadow: 0 25px 15px 0 rgb(0 0 0 / 45%);
+    opacity: 90%;
+    transform: translateY(22%);
+    -webkit-transition: height 0.3s ease-out;
+    -moz-transition: height 0.3s ease-out;
+    -o-transition: height 0.3s ease-out;
+    -webkit-transition: width 0.3s ease-out;
+    -moz-transition: width 0.3s ease-out;
+    -o-transition: width 0.3s ease-out;
+}
+
+svg:not(:root).svg-inline--fa:hover {
+    height: 70px;
+    transform: translateY(0%);
+    width: 70px;
+}
+
+input#my-input {
+    height: 40px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+img.login-form-logo {
+    height: 100px;
+    align-self: center;
+    width: 100px;
+}
+
+img.altbook-logo {
+    vertical-align: middle;
+    height: 200px;
+    width: 200px;
+    place-self: center;
+  }
+
+  .login-container {
+    height: 100%;
+    padding: 30%;
+    width: 100%;
+    place-self: center;
+  }
