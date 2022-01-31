@@ -1,3 +1,18 @@
-<div *ngFor="let userData of UserList">
-    <h2>Welcome {{userData.firstName}}</h2>
+<div class="home">
+  <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
+        <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a class="nav-links">Business Overview</a> </li>
+        <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
+        <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a class="nav-links"> Payroll </a> </li>
+        <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+  </div>
+  <div class='canvas-container'>
+    <div class= 'canvas'>
+            <div class='welcome-container'  [ngStyle]="{width:'90%'}" *ngFor="let userData of UserList">
+            <Button class='toggle-btn' (click)="toggleDiv()">
+                <fa-icon  [icon]="faBars" size ='lg'></fa-icon>
+            </Button>
+            <h3 class='user-welcome-start'>Welcome&nbsp;</h3><h3 class="user-welcome-banner"> {{userData.firstName}} {{userData.lastName}}</h3>
+          </div>
+    </div>  
+  </div> 
 </div>

@@ -1,0 +1,102 @@
+.home{
+    display: inline-flex;
+}
+
+.user-welcome-banner{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: right;
+    height: 100px;
+    padding-top: 1%;
+    font-size: larger;
+    display: inline-flex;
+    color: #1976d2;
+}
+.user-welcome-start{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: inline-flex;
+    font-size: larger;
+    height: 100px;
+}
+
+.welcome-container{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: right;
+    padding-right: 8%;
+    padding-top: 1%;
+}
+
+.canvas {
+    height: 90vh;
+    width: 100vw;
+    background: rgb(243, 243, 243);
+    border-radius: 30px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
+    align-self: center;
+    margin-left: 1%;
+}
+
+.app-show-user{
+    height: 100%;
+    width: 100%;
+}
+
+.canvas-container {
+    width: 100vw;
+    height: 100vh;
+    display: inline-flex;
+}
+
+button.toggle-btn {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    margin-left: 1%;
+    float: left;
+    box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
+    border: 1px solid #1976d2;
+}
+
+fa-icon.ng-fa-icon {
+    color: #1976d2;
+}
+
+.nav-card{
+    border-radius: 0px 30px 30px 0px;
+    box-shadow: 0 28px 15px 0 rgb(0 0 0 / 45%);
+    display: flex;
+    flex-direction: column;
+    width: 15vw; 
+    background:#313030;
+    padding-top: 10%;
+    place-content: center;
+}
+
+li.nav-list {
+    height: 4%;
+    list-style: none;
+    text-align: left;
+    padding-left: 3%;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+
+a.nav-links {
+    text-decoration: none;
+    color: white;
+    margin-left: 5px;
+}
+
+
+li.nav-list:hover {
+    background-color: rgb(175, 175, 175);
+    border-radius: 15px;
+    height: 35px;
+    padding-top: 2%;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    box-shadow: 0 28px 15px 0 rgb(0 0 0 / 45%);
+}
