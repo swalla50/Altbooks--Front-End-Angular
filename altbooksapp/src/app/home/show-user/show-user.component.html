@@ -9,10 +9,148 @@
     <div class= 'canvas'>
             <div class='welcome-container'  [ngStyle]="{width:'90%'}" *ngFor="let userData of UserList">
             <Button class='toggle-btn' (click)="toggleDiv()">
-                <fa-icon  [icon]="faBars" size ='lg'></fa-icon>
+                <fa-icon class='menu-toggle'  [icon]="faBars" size ='lg'></fa-icon>
             </Button>
             <h3 class='user-welcome-start'>Welcome&nbsp;</h3><h3 class="user-welcome-banner"> {{userData.firstName}} {{userData.lastName}}</h3>
           </div>
+          
+<div class= 'dash-container'>
+          
+          <main class='dash-contents'>
+            <div class="content-title">
+              <h2>Overview</h2><i class="fa fa-angle-right"></i>
+              <div class="filter">
+                <a class="filter__item">today</a>
+                <a class="filter__item">month</a>
+                <a class="filter__item">year</a>
+              </div>
+              <button>Log out</button>
+            </div>
+            <div class="pill-wrapper">
+              <div class="pill">
+                <i class="pill__icon fa fa-user"></i>
+                <div class="pill__detail">View Detail</div>
+                <div class="pill__content">
+                  <div class="pill__date">//today</div>
+                  <div class="pill__title">Overall Sale</div>
+                  <div class="pill__value">1231</div>        
+                </div>
+              </div>
+          
+              <div class="pill">
+                <i class="pill__icon fa fa-user"></i>
+                <div class="pill__detail">View Detail</div>
+                <div class="pill__content">
+                  <div class="pill__date">//today</div>
+                  <div class="pill__title">Overall Visited</div>
+                  <div class="pill__value">1446</div>        
+                </div>
+              </div>
+          
+              <div class="pill">
+                <i class="pill__icon fa fa-user"></i>
+                <div class="pill__detail">View Detail</div>
+                <div class="pill__content">
+                  <div class="pill__date">//today</div>
+                  <div class="pill__title">Overall Growth</div>
+                  <div class="pill__value">65%</div>        
+                </div>
+              </div>    
+            </div>
+            <div class="content-title">
+              <h2>Secondary</h2><i class="fa fa-angle-right"></i>
+            </div>
+            <div class="chart">
+              <h3 class='dash-heading'>total sale</h3>
+            </div>
+            <div class="activity-feed">
+              <h3 class='dash-heading'>User Activity</h3>
+              <ul class="feed">
+                <li class="feed__item user">
+                  <div class="user__avatar"></div>
+                  <div class="user__name">User</div>
+                  <div class="user__message">new comment</div>
+                  <div class="user__timestamp">4 minutes ago</div>
+                </li>
+                <li class="feed__item user">
+                  <div class="user__avatar"></div>
+                  <div class="user__name">User</div>
+                  <div class="user__message">new comment</div>
+                  <div class="user__timestamp">4 minutes ago</div>
+                </li>
+                <li class="feed__item user">
+                  <div class="user__avatar"></div>
+                  <div class="user__name">User</div>
+                  <div class="user__message">new comment</div>
+                  <div class="user__timestamp">4 minutes ago</div>
+                </li>
+                <li class="feed__item user">
+                  <div class="user__avatar"></div>
+                  <div class="user__name">User</div>
+                  <div class="user__message">new comment</div>
+                  <div class="user__timestamp">4 minutes ago</div>
+                </li>
+                <li class="feed__item user">
+                  <div class="user__avatar"></div>
+                  <div class="user__name">User</div>
+                  <div class="user__message">new comment</div>
+                  <div class="user__timestamp">4 minutes ago</div>
+                </li>
+                <li class="feed__item user">
+                  <div class="user__avatar"></div>
+                  <div class="user__name">User</div>
+                  <div class="user__message">new comment</div>
+                  <div class="user__timestamp">4 minutes ago</div>
+                </li>
+                <li class="feed__item user">
+                  <div class="user__avatar"></div>
+                  <div class="user__name">User</div>
+                  <div class="user__message">new comment</div>
+                  <div class="user__timestamp">4 minutes ago</div>
+                </li>      
+              </ul>
+              <div class="activity-feed__button">
+                View more
+              </div>
+            </div>
+            <div class="circle-chart">
+              <h3 class='dash heading'>Daily Traffic</h3>
+              <div class="circle-chart__content">
+                <div class="circle"></div>
+                <div class="legend">
+                  <div class="legend__item">
+                    <div class="legend__icon legend__icon--blue">   </div>
+                    User
+                  </div>
+                  <div class="legend__item">
+                    <div class="legend__icon legend__icon--orange"></div>
+                    Visitor
+                  </div>       
+                </div>
+              </div>
+            </div>
+            <div class="circle-chart">
+              <h3>Productivity</h3>
+              <div class="circle-chart__content">
+                <div class="circle"></div>
+                <div class="legend">
+                  <div class="legend__item">
+                    <div class="legend__icon legend__icon--blue">   </div>
+                    Safe
+                  </div>
+                  <div class="legend__item">
+                    <div class="legend__icon legend__icon--orange"></div>
+                    Low Risk
+                  </div>        
+                  <div class="legend__item">
+                    <div class="legend__icon legend__icon--red"></div>
+                    Risk
+                  </div>        
+                </div>
+              </div>
+            </div>
+          </main>
     </div>  
   </div> 
+</div>
 </div>

@@ -34,7 +34,7 @@ export class ShowUserComponent implements OnInit {
   faMoneyCheck = faMoneyCheck;
   faReceipt = faReceipt;
 
-  showDiv: boolean = true;
+  showDiv: boolean = false;
    
   toggleDiv() {
     this.showDiv = this.showDiv? false : true;
