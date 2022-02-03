@@ -1,0 +1,296 @@
+.home{
+    display: inline-flex;
+}
+
+.user-welcome-banner{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: right;
+    height: 100px;
+    padding-top: 1%;
+    font-size: larger;
+    display: inline-flex;
+    color: #1976d2;
+    align-items: center;
+}
+.user-welcome-start{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: inline-flex;
+    font-size: larger;
+    height: 100px;
+}
+
+.welcome-container{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: right;
+    padding-right: 8%;
+    padding-top: 1%;
+}
+
+.canvas {
+    height: 90vh;
+    width: 100vw;
+    background: rgb(243, 243, 243);
+    border-radius: 30px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
+    align-self: center;
+    margin-left: 1%;
+    overflow-y: scroll;
+}
+
+.app-show-user{
+    height: 100%;
+    width: 100%;
+}
+
+.canvas-container {
+    width: 100vw;
+    height: 100vh;
+    display: inline-flex;
+}
+fa-icon.ng-fa-icon.menu-toggle.ng-tns-c23-0{
+    color:#1976d2;
+}
+
+button.toggle-btn {
+    border-radius: 50px;
+    position: fixed;
+    left: 30px;
+    z-index: 99;
+    font-size: 24px;
+    outline: none;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
+    border: 1px solid #1976d2;
+}
+button.toggle-btn:hover {
+    transform: translateY(10px);
+    -webkit-transition: all 1s ease;
+    transition: all 500ms ease-in-out;
+}
+
+fa-icon.ng-fa-icon {
+    color: #1976d2;
+}
+
+.nav-card{
+    border-radius: 0px 30px 30px 0px;
+    box-shadow: 0 28px 15px 0 rgb(0 0 0 / 45%);
+    display: flex;
+    flex-direction: column;
+    width: 15vw; 
+    background:#313030;
+    padding-top: 10%;
+    place-content: center;
+}
+
+li.nav-list {
+    height: 4%;
+    list-style: none;
+    text-align: left;
+    padding-left: 3%;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+
+a.nav-links {
+    text-decoration: none;
+    color: white;
+    margin-left: 5px;
+}
+
+
+li.nav-list:hover {
+    background-color: rgb(175, 175, 175);
+    border-radius: 15px;
+    height: 35px;
+    padding-top: 2%;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    box-shadow: 0 28px 15px 0 rgb(0 0 0 / 45%);
+}
+
+img.user-pic.ng-tns-c23-0 {
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+    border: 3px solid #1976d2;
+    margin-left: 20px;
+}
+
+img.user-pic.ng-tns-c23-0:hover{
+    transform: scale(1.1);
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.row1-analytics.ng-tns-c23-0 {
+    padding-inline: 20px;
+}
+
+.sales.ng-tns-c23-0 {
+    height: 200px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
+    width: 100%;
+    border-radius: 30px;
+    background: white;
+    margin-top: 20px;
+}
+
+.left-feed.ng-tns-c23-0 {
+    height: 500px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
+    overflow-y: scroll;
+}
+.second-row.ng-tns-c23-0 {
+    padding-inline: 20px;
+    margin-top: 20px;
+    display: grid;
+}
+li.bank-feed-item.ng-tns-c23-0 {
+    height: 50px;
+    list-style: none;
+}
+.left-container.ng-tns-c23-0 {
+    grid-column: 1;
+    padding-inline: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 50px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 50px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 50px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1976d2; 
+  }
+h3.Banking-feed-heading.ng-tns-c23-0 {
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    color: #1976d2;
+}
+
+h2.ng-tns-c23-0 {
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    color: #1976d2;
+}
+
+.right-components.ng-tns-c23-0 {
+    height: 500px;
+    border-radius: 30px;
+}
+
+h3.Components.ng-tns-c23-0{
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 0 16px;
+    color: #1976d2;
+}
+
+.right-component-container.ng-tns-c23-0{
+    grid-column: 2;
+}
+
+.right-components.ng-tns-c23-0[_ngcontent-khm-c23]{
+    margin: 20px auto;
+    width:400px;
+    height:400px;
+    display:grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.bank-component{
+    background-color:#333;
+    width: 50%;
+    height: 100%;
+    border-radius: 30px;
+    margin-right: 5px;
+  }
+
+  .Payroll-component{
+    background-color:#333;
+    width: 50%;
+    height: 100%;
+    border-radius: 30px;
+    margin-left: 5px;
+  }
+
+  .bookkeeping-component{
+    background-color:#333;
+    width: 50%;
+    height: 100%;
+    border-radius: 30px;
+    margin-right: 5px;
+  }
+
+  .other-component{
+    background-color:#333;
+    width: 50%;
+    height: 100%;
+    border-radius: 30px;
+    margin-left: 5px;
+  }
+
+  .row1-components.ng-tns-c23-0 {
+    height: 50%;
+    width: 100%;
+    display: inline-flex;
+    padding: 10px;
+}
+
+.row2-components.ng-tns-c23-0{
+    height: 50%;
+    width: 100%;
+    display: inline-flex;
+    padding: 10px;
+}
+
+.bank-component:hover{
+    transform: scale(1.02);
+    -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+}
+.Payroll-component:hover{
+    transform: scale(1.02);
+    -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+}
+
+.other-component:hover{
+    transform: scale(1.02);
+    -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+}
+
+.bookkeeping-component:hover{
+    transform: scale(1.02);
+    -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+}

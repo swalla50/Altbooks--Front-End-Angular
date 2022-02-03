@@ -6,8 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ShowUserComponent } from './home/show-user/show-user.component';
-import { AddEditUserComponent } from './home/add-edit-user/add-edit-user.component';
 import { SharedService } from './shared.service';
 
 import {HttpClientModule} from '@angular/common/http';
@@ -17,12 +15,12 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ShowUserComponent,
-    AddEditUserComponent,
     LoginComponent,
     RegisterComponent
   ],

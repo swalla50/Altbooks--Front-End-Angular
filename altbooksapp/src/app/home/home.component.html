@@ -1,2 +1,79 @@
-<app-show-user></app-show-user>
-
+<div class="home">
+    <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
+          <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a class="nav-links">Business Overview</a> </li>
+          <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
+          <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a class="nav-links"> Payroll </a> </li>
+          <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+    </div>
+    <div class='canvas-container'>
+      <div class= 'canvas'>
+              <div class='welcome-container'  [ngStyle]="{width:'90%'}" *ngFor="let userData of UserList">
+              <Button  *ngFor="let item of menuItems; let i = index" class='toggle-btn' (click)="toggleDiv(); menuClick(i)">
+                  <fa-icon  *ngIf="item.state" class='menu-toggle'  [icon]="faBars" size ='lg'></fa-icon>
+                  <fa-icon  *ngIf="!item.state" class='menu-toggle'  [icon]="faTimes" size ='lg'></fa-icon>
+              </Button>
+              <h3 class='user-welcome-start'>Welcome&nbsp;</h3><h3 class="user-welcome-banner"> {{userData.firstName}} {{userData.lastName}}<div class='profile-pic'><img class= 'user-pic'src ='assets/images/steven-user-pic.png'/></div></h3>
+            </div>
+            <div class= 'dash-container'>
+              <div class= 'overview-header'>
+                <h2> Overview </h2>
+              </div>
+              <div class= row1-analytics>
+                <div class= 'sales'>
+          
+                </div>
+              </div>
+              <div class= 'second-row'>
+              <div class= 'left-container'>
+                <h3 class='Banking-feed-heading'>Banking Information</h3>
+                <div class ='left-feed'>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
+                </div>
+            </div>
+            <div class="right-component-container">
+              <h3 class='Components'>Your quick links</h3>
+              <div class = 'right-components'>
+                <div class='row1-components'>
+                  <div id='component-item' class ='bank-component'>
+                    <p>4</p>
+                  </div>
+                  <div id='component-item' class = 'Payroll-component'>
+                    <p>4</p>
+                  </div>
+                </div>
+                <div class='row2-components'>
+                  <div id='component-item' class ='bookkeeping-component'>
+                    <p>4</p>
+                  </div>
+                  <div id='component-item' class = 'other-component'>
+                    <p>4</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>   
+            </div>
+      </div>
+    </div>
+            
+    
+  </div>
