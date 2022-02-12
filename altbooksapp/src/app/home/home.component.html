@@ -4,15 +4,16 @@
           <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
           <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a class="nav-links"> Payroll </a> </li>
           <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+          <button class= 'nav-list' (click)="onLogout()"> Logout </button>
     </div>
     <div class='canvas-container'>
-      <div class= 'canvas'>
-              <div class='welcome-container'  [ngStyle]="{width:'90%'}" *ngFor="let userData of UserList">
+      <div class= 'canvas scroller'>
+              <div class='welcome-container'  [ngStyle]="{width:'90%'}" *ngIf="userDetails">
               <Button  *ngFor="let item of menuItems; let i = index" class='toggle-btn' (click)="toggleDiv(); menuClick(i)">
                   <fa-icon  *ngIf="item.state" class='menu-toggle'  [icon]="faBars" size ='lg'></fa-icon>
                   <fa-icon  *ngIf="!item.state" class='menu-toggle'  [icon]="faTimes" size ='lg'></fa-icon>
               </Button>
-              <h3 class='user-welcome-start'>Welcome&nbsp;</h3><h3 class="user-welcome-banner"> {{userData.firstName}} {{userData.lastName}}<div class='profile-pic'><img class= 'user-pic'src ='assets/images/steven-user-pic.png'/></div></h3>
+              <h3 class='user-welcome-start'>Welcome&nbsp;</h3><h3 class="user-welcome-banner"> {{userDetails.fullName}}</h3>
             </div>
             <div class= 'dash-container'>
               <div class= 'overview-header'>
@@ -26,7 +27,7 @@
               <div class= 'second-row'>
               <div class= 'left-container'>
                 <h3 class='Banking-feed-heading'>Banking Information</h3>
-                <div class ='left-feed'>
+                <div class ='left-feed scroller'>
                   <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
                   <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
                   <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
@@ -62,9 +63,12 @@
                 </div>
                 <div class='row2-components'>
                   <div id='component-item' class ='bookkeeping-component'>
-                    <p>4</p>
+                    <div>
+                      <h3 class="widget-card-header">Settings</h3>
+                    <fa-icon   class='setting-icon'  [icon]="faCogs" size ='5x'></fa-icon>
+                    </div>
                   </div>
-                  <div id='component-item' class = 'other-component'>
+                  <div id='component-item' class = 'other-component' (click)="onLogout()">
                     <p>4</p>
                   </div>
                 </div>

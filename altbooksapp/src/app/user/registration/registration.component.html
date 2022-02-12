@@ -1,0 +1,44 @@
+<div class="register" [ngStyle]="{backgroundImage:'url(../assets/images/bookkeepingbackground.jpeg)', backgroundSize: 'cover', height: '100vh'}">
+    <div  class='login-container'>
+    <form [formGroup]="service.formModel" autoComplete='off' (submit)="onSubmit()">
+        <div class="log-sign">
+            <h2 class= "log-btn" routerLink='/user/login' routerLinkActive='active'>Sign In</h2>
+            <h2 class= "sign-btn"routerLink='/user/registration' routerLinkActive='active'>Sign Up</h2>
+          </div>
+        <img class='altbook-logo' src = "assets/images/altbookwithtext.png" />
+
+        <div class='form-input-container'>
+            <div class="form-group" required>
+                <label > Please enter your full name: </label>
+                <input class="form-control" formControlName= "FullName"  type ="text" id="my-input"/>
+            </div>
+            <div class="form-group" required>
+                <label> Please enter a user name: </label>
+                <input class="form-control" formControlName= "UserName"   type ="text" id="my-input"/>
+            </div>
+            <div class="form-group" required>
+                <label > Please enter an email: </label>
+                <input class="form-control" formControlName= "Email"    type ="email"id="my-input"/>
+            </div>
+            <div formGroupName="Passwords">
+                <div class="form-group" required>
+                    <label > Please enter a password: </label>
+                    <input class="form-control" formControlName= "Password"    type ="password"id="my-input"/>
+                </div>
+                <div class="form-group" required>
+                    <label > Please confirm your Password: </label>
+                    <input class="form-control" formControlName= "ConfirmPassword"    type ="password"id="my-input"/>
+                </div>
+            </div>
+            
+            <input type="checkbox" required />
+            <div class="form-row">
+                <div class= "form-group">
+                    <button   type="submit"  class='btn-outline-primary'> Sign Up </button>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</div>
+</div>

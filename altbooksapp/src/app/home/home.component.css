@@ -133,8 +133,8 @@ img.user-pic.ng-tns-c23-0:hover{
     padding-inline: 20px;
 }
 
-.sales.ng-tns-c23-0 {
-    height: 200px;
+.sales.ng-tns-c57-0 {
+    height: 300px;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
     width: 100%;
     border-radius: 30px;
@@ -142,23 +142,25 @@ img.user-pic.ng-tns-c23-0:hover{
     margin-top: 20px;
 }
 
-.left-feed.ng-tns-c23-0 {
+.left-feed.scroller.ng-tns-c57-0 {
     height: 500px;
     background: white;
     border-radius: 30px;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
     overflow-y: scroll;
 }
-.second-row.ng-tns-c23-0 {
+.second-row.ng-tns-c57-0 {
     padding-inline: 20px;
     margin-top: 20px;
     display: grid;
+    margin-bottom: 20px;
 }
-li.bank-feed-item.ng-tns-c23-0 {
+.bank-feed-item.ng-tns-c57-0 {
     height: 50px;
     list-style: none;
+    font-size: 18px;
 }
-.left-container.ng-tns-c23-0 {
+.left-container.ng-tns-c57-0 {
     grid-column: 1;
     padding-inline: 20px;
 }
@@ -185,21 +187,29 @@ li.bank-feed-item.ng-tns-c23-0 {
   ::-webkit-scrollbar-thumb:hover {
     background: #1976d2; 
   }
+
+  .scroller {
+    scrollbar-color: #7f7f7f white; /* thumb and track color */
+    scrollbar-width: thin;
+    border-radius: 30px;
+  }
+
 h3.Banking-feed-heading.ng-tns-c23-0 {
     font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
     color: #1976d2;
+    border-bottom: solid gray;
 }
 
 h2.ng-tns-c23-0 {
-    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+    font: 500 35px/25px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
     color: #1976d2;
 }
 
-.right-components.ng-tns-c23-0 {
+.right-component-container.ng-tns-c57-0 {
     height: 500px;
     border-radius: 30px;
 }
@@ -208,18 +218,20 @@ h3.Components.ng-tns-c23-0{
     font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
     margin: 0 0 16px;
-    color: #1976d2;
+    color: #1976d2; 
+    border-bottom: solid gray;
 }
 
-.right-component-container.ng-tns-c23-0{
+.right-component-container.ng-tns-c57-0{
     grid-column: 2;
+    height: 100%;
 }
 
-.right-components.ng-tns-c23-0[_ngcontent-khm-c23]{
+.right-components.ng-tns-c57-0{
     margin: 20px auto;
     width:400px;
     height:400px;
-    display:grid;
+    display: contents;
     grid-template-columns: 200px 200px;
     grid-row: auto auto;
     grid-column-gap: 20px;
@@ -258,14 +270,14 @@ h3.Components.ng-tns-c23-0{
     margin-left: 5px;
   }
 
-  .row1-components.ng-tns-c23-0 {
+  .row1-components.ng-tns-c57-0 {
     height: 50%;
     width: 100%;
     display: inline-flex;
     padding: 10px;
 }
 
-.row2-components.ng-tns-c23-0{
+.row2-components.ng-tns-c57-0{
     height: 50%;
     width: 100%;
     display: inline-flex;
@@ -294,3 +306,32 @@ h3.Components.ng-tns-c23-0{
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
 }
+
+svg.svg-inline--fa.fa-cogs.fa-w-20.fa-5x {
+    vertical-align: -8rem;
+}
+button.nav-list.ng-tns-c57-0 {
+    border-radius: 20px;
+    background: #1976d2;
+    border: solid 1px white;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white;
+}
+button.nav-list.ng-tns-c57-0:hover {
+    transform: scale(1.1);
+    -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+}
+svg.svg-inline--fa.fa-bars.fa-w-14.fa-lg {
+    margin-bottom: 100%;
+}
+.ng-fa-icon.setting-icon.ng-tns-c57-0:hover{
+    transform: scale(1.1);
+    -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+}
+
+.widget-card-header.ng-tns-c57-0 {
+    color: white;
+  }

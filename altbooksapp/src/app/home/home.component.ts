@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { faPiggyBank } from '@fortawesome/free-solid-svg-icons';
 import { faMoneyCheck } from '@fortawesome/free-solid-svg-icons';
 import { faReceipt } from '@fortawesome/free-solid-svg-icons';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCogs } from '@fortawesome/free-solid-svg-icons';
 
 
 import { trigger, transition, animate, style} from '@angular/animations';
+import { Router } from '@angular/router';
+import { UserService } from '../shared/user.service';
 
 export interface CollapsibleItem { 
   label: string; 
@@ -36,6 +39,8 @@ export interface CollapsibleItem {
 })
 export class HomeComponent implements OnInit {
 
+  userDetails: any;
+
   faBars = faBars;
   faTimes = faTimes;
   faBriefcase = faBriefcase;
@@ -43,6 +48,7 @@ export class HomeComponent implements OnInit {
   faMoneyCheck = faMoneyCheck;
   faReceipt = faReceipt;
   faDollarSign = faDollarSign;
+  faCogs = faCogs;
 
   showDiv: boolean = false;
    
@@ -50,7 +56,7 @@ export class HomeComponent implements OnInit {
     this.showDiv = this.showDiv? false : true;
   }
 
-  constructor(private service:SharedService) { }
+  constructor(public service:UserService, private router:Router) { }
 
   menuItems: CollapsibleItem[] = [
     { label: 'First', text: 'Lorem Ipsum', state: true }
@@ -66,18 +72,20 @@ export class HomeComponent implements OnInit {
         // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
      }   
 
-  UserList:any = [];
+ 
 
   ngOnInit(): void {
-    this.refreshUserList();
-  }
-
-  refreshUserList(){
-    this.service.getUserList().subscribe(data=>{
-      this.UserList = data.filter(data => data.UserId === 1);
+    this.service.getUserProfile().subscribe(data=>{
+      this.userDetails = data,
+      
       
       //Logs the returned Filtered data matching the specifc userID in the Database
-      console.log("Logged in user information: ", this.UserList);
+      console.log("Logged in user information: ", this.userDetails);
     });
+  }
+
+  onLogout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
   }
 }

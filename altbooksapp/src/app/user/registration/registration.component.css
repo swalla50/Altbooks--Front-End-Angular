@@ -112,3 +112,67 @@ img.altbook-logo {
     width: 100%;
     place-self: center;
   }
+
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+    text-align: center;
+    place-content: center;
+    margin-top: 7%;
+  }
+
+  
+  .btn-outline-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    height: 40px;
+    border: solid 1px white;
+    border-radius: 20px;
+    width: 200px;
+    align-self: center;
+    margin-top: 10px;
+    
+}
+
+  .btn-outline-primary:hover {
+    transform: scale(1.1);
+    -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+    
+}
+
+input[type="checkbox"] {
+    margin-top: 20px;
+}
+
+div.form-group.required> label:first-child:after{
+    content:'*';
+    color: red;
+    padding-left: 5px;
+}
+
+.log-btn{
+  height: 40px;
+  margin-right: 100px;
+  cursor: pointer;
+}
+.sign-btn.active{
+  height: 40px;
+  border-bottom: solid 1px white;
+  cursor: pointer;
+}
+
+
+.log-sign {
+  display: inline-flex;
+  place-content: center;
+}
+
+img.altbook-logo {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  place-self: center;
+}

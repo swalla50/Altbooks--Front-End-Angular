@@ -1,0 +1,30 @@
+<div class="App" >
+    <div class='login-container' [ngStyle] ="{backgroundImage:'url(assets/images/bookkeepingbackground.jpeg)', backgroundSize: 'cover'}">
+    <form  #form='ngForm' autocomplete="off" (submit) = "onSubmit(form)" > 
+      <div class="log-sign">
+        <h2 class= "log-btn" routerLink='/user/login' routerLinkActive='active'>Sign In</h2>
+        <h2 class= "sign-btn"routerLink='/user/registration' routerLinkActive='active'>Sign Up</h2>
+      </div>
+      <img  class="login-form-logo"src="assets/images/altbookwithtext.png">
+      
+      <div class='form-input-container'>
+      <div class="form-group" id="first-form-group">
+        <label> User Name: </label>
+        <input class= "form-conntrol" #UserName ="ngModel" name="UserName" [(ngModel)]="formModel.UserName"  id="my-input"  required aria-describedby="my-helper-text"/>
+      </div>
+      <div class="form-group" id="first-form-group">
+        <label class='password-label'> Password: </label>
+        <input class= "form-conntrol" #Password ="ngModel" name="Password" [(ngModel)]="formModel.Password" type="password"  id="my-input" required aria-describedby="my-helper-text"/>
+      </div>
+      
+      <input type="checkbox" required />
+      
+
+        
+    </div>
+    <div class= "form-group" id="submit-button-login">
+        <button   type="submit"  class='btn-outline-primary' [disabled]="form.invalid"> Login  </button>
+    </div>
+    </form>
+    </div>
+  </div>

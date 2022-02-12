@@ -4,7 +4,7 @@
     padding:0;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
-    height: 100vh;
+    height: 100px;
     overflow: hidden;
   } 
   
@@ -75,7 +75,7 @@
   }
   
   button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.toggle-btn.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-    height: 65px;
+    height: 40px;
     width: 50px;
     background: #313030;
     position: absolute;
@@ -150,7 +150,7 @@
   
   }
   input[type="checkbox"] {
-    height: 40px;
+    height: 20px;
   }
   
   img.altbook-logo {
@@ -164,15 +164,52 @@
     color: #fff;
     background-color: #0d6efd;
     height: 40px;
-    border-color: #0d6efd;
+    border: solid 1px white;
     border-radius: 20px;
     width: 200px;
     align-self: center;
+    margin-top: 10px;
     
+}
+
+.btn-outline-primary:hover{
+  transform: scale(1.1);
+  -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
 }
 
 img.login-form-logo {
     height: 100px;
     align-self: center;
     width: 100px;
+}
+
+.form-group {
+  height: 63px;
+}
+.form-input-container {
+  height: fit-content;
+}
+.form-group[_ngcontent-cnj-c60] {
+  height: 94px;
+}
+
+div#first-form-group {
+  height: 45%;
+  display: grid;
+}
+.log-btn.active{
+  height: 40px;
+  margin-right: 100px;
+  border-bottom: solid 1px white;
+  cursor: pointer;
+}
+.sign-btn{
+  height: 40px;
+  cursor: pointer;
+}
+
+.log-sign {
+  display: inline-flex;
+  place-content: center;
 }
