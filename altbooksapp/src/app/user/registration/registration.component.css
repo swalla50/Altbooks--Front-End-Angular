@@ -158,7 +158,7 @@ div.form-group.required> label:first-child:after{
   margin-right: 100px;
   cursor: pointer;
 }
-.sign-btn.active{
+h2.sign-btn{
   height: 40px;
   border-bottom: solid 1px white;
   cursor: pointer;
@@ -175,4 +175,8 @@ img.altbook-logo {
   width: 100px;
   height: 100px;
   place-self: center;
+}
+
+select#my-input {
+  border-radius: 30px;
 }

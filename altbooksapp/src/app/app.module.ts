@@ -18,7 +18,11 @@ import { LoginComponent } from './user/login/login.component';
 import { UserService } from './shared/user.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
-
+import { FinDataService } from './fin-data.service';
+import { SettingsComponent } from './settings/settings.component';
+import { NgxPlaidLinkModule } from 'ngx-plaid-link';
+import { SharedService } from './shared.service';
+import { QuestionComponent } from './Components/question/question.component';
 
 
 
@@ -28,7 +32,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     HomeComponent,
     UserComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    SettingsComponent,
+    QuestionComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -41,13 +48,14 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     FontAwesomeModule,
     CommonModule,
     ToastrModule.forRoot({
-      positionClass :'toast-bottom-right'
-    })
+      positionClass :'toast-top-right'
+    }),
+    NgxPlaidLinkModule
   ],
-  providers: [UserService, {
+  providers: [UserService, FinDataService, SharedService,{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
-    multi:true
+    multi:true,
   }],
   bootstrap: [AppComponent],
 })

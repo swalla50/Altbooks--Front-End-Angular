@@ -213,3 +213,7 @@ div#first-form-group {
   display: inline-flex;
   place-content: center;
 }
+
+#toast-container > div {
+  opacity:1;
+}

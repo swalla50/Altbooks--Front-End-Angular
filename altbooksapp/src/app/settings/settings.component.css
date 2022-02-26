@@ -129,11 +129,11 @@ img.user-pic.ng-tns-c23-0:hover{
     cursor: pointer;
 }
 
-.row1-analytics.ng-tns-c61-0 {
+.row1-analytics.ng-tns-c23-0 {
     padding-inline: 20px;
 }
 
-.sales.ng-tns-c61-0 {
+.sales.ng-tns-c57-0 {
     height: 300px;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
     width: 100%;
@@ -142,25 +142,25 @@ img.user-pic.ng-tns-c23-0:hover{
     margin-top: 20px;
 }
 
-.left-feed.scroller.ng-tns-c61-0 {
+.left-feed.scroller.ng-tns-c57-0 {
     height: 500px;
     background: white;
     border-radius: 30px;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
     overflow-y: scroll;
 }
-.second-row.ng-tns-c61-0 {
+.second-row.ng-tns-c57-0 {
     padding-inline: 20px;
     margin-top: 20px;
     display: grid;
     margin-bottom: 20px;
 }
-.bank-feed-item.ng-tns-c61-0 {
+.bank-feed-item.ng-tns-c57-0 {
     height: 50px;
     list-style: none;
     font-size: 18px;
 }
-.left-container.ng-tns-c61-0 {
+.left-container.ng-tns-c57-0 {
     grid-column: 1;
     padding-inline: 20px;
 }
@@ -209,7 +209,7 @@ h2.ng-tns-c23-0 {
     color: #1976d2;
 }
 
-.right-components.ng-tns-c61-0 {
+.right-component-container.ng-tns-c57-0 {
     height: 500px;
     border-radius: 30px;
 }
@@ -222,12 +222,12 @@ h3.Components.ng-tns-c23-0{
     border-bottom: solid gray;
 }
 
-.right-component-container.ng-tns-c61-0{
+.right-component-container.ng-tns-c57-0{
     grid-column: 2;
     height: 100%;
 }
 
-.right-components.ng-tns-c61-0{
+.right-components.ng-tns-c57-0{
     margin: 20px auto;
     width:400px;
     height:400px;
@@ -270,14 +270,14 @@ h3.Components.ng-tns-c23-0{
     margin-left: 5px;
   }
 
-  .row1-components.ng-tns-c61-0 {
+  .row1-components.ng-tns-c57-0 {
     height: 50%;
     width: 100%;
     display: inline-flex;
     padding: 10px;
 }
 
-.row2-components.ng-tns-c61-0{
+.row2-components.ng-tns-c57-0{
     height: 50%;
     width: 100%;
     display: inline-flex;
@@ -288,33 +288,29 @@ h3.Components.ng-tns-c23-0{
     transform: scale(1.02);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
-    cursor: pointer;
 }
 .Payroll-component:hover{
     transform: scale(1.02);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
-    cursor: pointer;
 }
 
 .other-component:hover{
     transform: scale(1.02);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
-    cursor: pointer;
 }
 
 .bookkeeping-component:hover{
     transform: scale(1.02);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
-    cursor: pointer;
 }
 
 svg.svg-inline--fa.fa-cogs.fa-w-20.fa-5x {
     vertical-align: -8rem;
 }
-button.nav-list.ng-tns-c61-0 {
+button.nav-list.ng-tns-c65-0{
     border-radius: 20px;
     background: #1976d2;
     border: solid 1px white;
@@ -322,7 +318,7 @@ button.nav-list.ng-tns-c61-0 {
     margin-left: 10px;
     color: white;
 }
-button.nav-list.ng-tns-c61-0:hover {
+button.nav-list.ng-tns-c57-0:hover {
     transform: scale(1.1);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
@@ -330,28 +326,119 @@ button.nav-list.ng-tns-c61-0:hover {
 svg.svg-inline--fa.fa-bars.fa-w-14.fa-lg {
     margin-bottom: 100%;
 }
-.ng-fa-icon.setting-icon.ng-tns-c61-0:hover{
+.ng-fa-icon.setting-icon.ng-tns-c57-0:hover{
     transform: scale(1.1);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
 }
 
-.widget-card-header.ng-tns-c61-0 {
+.widget-card-header.ng-tns-c57-0 {
     color: white;
-    font-size: 20px;
   }
 
-a.settingsLink.ng-tns-c61-0 {
-    text-decoration: none;
+.addUser.ng-tns-c65-0 {
+    width: 300px;
+    height: 300px;
+    background: #1976d2;
+    border-radius: 40px;
+    margin: 30px;
+    box-shadow: rgb(0 0 0 / 30%) 0px 25px 15px 0px;
+}
+.addUser.ng-tns-c65-0:hover{
+    transform: scale(.9);
+    -webkit-transition: all .1s ease;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+    padding: 50px;
 }
 
+.changeMy.ng-tns-c65-0 {
+    width: 300px;
+    height: 300px;
+    background: #1976d2;
+    border-radius: 40px;
+    margin: 30px;
+    box-shadow: rgb(0 0 0 / 30%) 0px 25px 15px 0px;
+}
+.changeMy.ng-tns-c65-0:hover{
+    transform: scale(.9);
+    -webkit-transition: all .1s ease;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+    padding: 50px;
+}
+.manageCompany.ng-tns-c65-0 {
+    width: 300px;
+    height: 300px;
+    background: #1976d2;
+    border-radius: 40px;
+    margin: 30px;
+    box-shadow: rgb(0 0 0 / 30%) 0px 25px 15px 0px;
+}
+.manageCompany.ng-tns-c65-0:hover{
+    transform: scale(.9);
+    -webkit-transition: all .1s ease;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+    padding: 50px;
+}
+.row1-analytics.ng-tns-c65-0 {
+    display: inline-flex;
+    margin: 20px;
+}
+fa-icon.ng-fa-icon.add-user.ng-tns-c65-0 {
+    color: white;
+}
 
-.news-feed.ng-tns-c61-0 {
+fa-icon.ng-fa-icon.update-user-icon.ng-tns-c65-0{
+    color: white;
+}
+
+fa-icon.ng-fa-icon.update-company.ng-tns-c65-0{
+    color: white;
+}
+h3.setting-widget-heading.ng-tns-c65-0 {
+    color: white;
+    font-size: 20px;
+}
+
+form.addUser-form.ng-tns-c65-0.ng-invalid.ng-dirty.ng-touched {
+    overflow-y: scroll;
+    height: 500px;
+    padding: 1%;
+}
+
+.btn-outline-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    height: 40px;
+    border: solid 1px white;
+    border-radius: 20px;
+    width: 200px;
+    align-self: center;
+    margin-top: 10px;
+    
+}
+
+.btn-outline-primary:hover{
+  transform: scale(1.1);
+  -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    place-content: center;
+    margin-left: -5px;
+}
+
+.news-feed.ng-tns-c65-0 {
     background: #333333;
     transform: translateX(-30px);
     margin-top: 10vh;
     width: 500px;
-    height: 600px;
     margin-bottom: 10vh;
     border-radius: 30px;
     display: inline-flex;
@@ -361,13 +448,11 @@ a.settingsLink.ng-tns-c61-0 {
 }
 
 
-.news-feed.ng-tns-c61-0.visited {
+.news-feed.ng-tns-c65-0.visited {
     background: #333333;
     transform: translateX(-477px);
     margin-top: 10vh;
     width: 500px;
-    height: 600px;
-    overflow-y: scroll;
     margin-bottom: 10vh;
     border-radius: 30px;
     display: inline-flex;
@@ -375,17 +460,17 @@ a.settingsLink.ng-tns-c61-0 {
     transition: all 200ms ease-in-out;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
 }
-.toggle-col.ng-tns-c61-0 {
+.toggle-col.ng-tns-c65-0 {
     align-self: center;
     height: 100%;
 }
 
-button.feed-toggle.ng-tns-c61-0 {
+button.feed-toggle.ng-tns-c65-0 {
     background: transparent;
     border: none;
     height: 100%;
 }
-.news-feed-content.ng-tns-c61-0 {
+.news-feed-content.ng-tns-c65-0 {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -397,128 +482,6 @@ button.feed-toggle.ng-tns-c61-0 {
     margin-left: 5px;
     border-radius: 20px;
 }
-.news-feed-container.ng-tns-c61-0 {
+.news-feed-container.ng-tns-c65-0 {
     height: 100%;
 }
-
-.post-container.ng-tns-c61-0 {
-    height: fit-content;
-    background: #8da4f5;
-    border-radius: 20px;
-    box-shadow: rgb(0 0 0 / 45%) 0px 10px 15px 0px;
-    margin-bottom: 10px;
-}
-.user-post-name.ng-tns-c61-0 {
-    text-align: left;
-    padding: 15px;
-    color: white;
-    font-family: 'Ubuntu';
-    font-size: 15px;
-    display:inline-flex;
-    width: 100%;
-}
-
-.post-content.ng-tns-c61-0 {
-    color: black;
-    background-color: white;
-    margin-inline: 1%;
-    text-align: left;
-    height: 100px;
-    padding: 2%;
-    border-radius: 10px;
-    overflow-y: scroll;
-}
-.news-feed-container.ng-tns-c61-0 {
-    overflow-y: scroll;
-    padding-inline: 4%;
-    padding: 15px;
-}
-
-.addFeed.ng-tns-c61-0:hover{
-    transform: translateY(-10px);
-    -webkit-transition: all 1s ease;
-    transition: all 300ms ease-in-out;
-    cursor: pointer;
-}
-h3.feed-heading.ng-tns-c61-0 {
-    font-family: 'Ubuntu';
-    font-weight: 500;
-}
-
-app-question.ng-tns-c61-0 {
-    margin-left: 10px;
-    color: #1976d2;
-}
-
-h5#exampleModal2Label {
-    color: #1976d2;
-}
-
-.user-post-time.ng-tns-c61-0 {
-    color: white;
-    font-family: 'Ubuntu';
-    font-size: 11px;
-    text-align: left;
-    margin-left: 17px;
-}
-.modal-content.ng-tns-c61-0 {
-    border-radius: 15px;
-}
-.form-row.ng-tns-c61-0{
-    justify-content: center;
-}
-button.btn-outline-primary.ng-tns-c61-0{
-    border-radius: 15px;
-    background:#1976d2 ;
-    border: none;
-    width: 50%;
-    height: 30px;
-    color: white;
-    box-shadow: rgb(0 0 0 / 45%) 0px 15px 15px 0px;
-}
-button.btn-outline-primary.ng-tns-c61-0:hover{
-    transform: translateY(6px);
-    -webkit-transition: all 1s ease;
-    transition: all 300ms ease-in-out;
-}
-
-.form-group.ng-tns-c61-0 {
-    width: 100%;
-}
-button.btn.btn-warning.ng-tns-c61-0{
-    background: red;
-    color: white;
-    border:none;
-    border-radius: 50px;
-}
-
-.post-subject.ng-tns-c61-0 {
-    margin-left: 22px;
-    width: 60%;
-    line-height: 30px;
-    font-size: 30px;
-    -webkit-text-stroke: 3px #4b70f4;
-    font-weight: bold;
-}
-
-.accordion-item.ng-tns-c61-0{
-    background: transparent;
-    border:none;
-
-}
-.accordion-button.ng-tns-c61-0.collapsed {
-    height: 10px;
-    background: transparent;
-  }
-
-  .accordion-button.ng-tns-c61-0 {
-    height: 10px;
-    background-color: #333;
-    border-radius: 20px;
-  }
-
-  .accordion-button:focus {
-
-    box-shadow: none;
-  }
-  

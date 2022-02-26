@@ -7,7 +7,7 @@ import { UserService } from 'src/app/shared/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css', ]
 })
 export class LoginComponent implements OnInit {
 
@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
     this.service.login(form.value).subscribe(
       (res:any) =>{
         localStorage.setItem('token', res.token);
-        this.router.navigateByUrl('/home');
+        this.toastr.success('Login Success');
+        this.router.navigate(['/home']);
       },
       err =>{
         if(err.status == 400)

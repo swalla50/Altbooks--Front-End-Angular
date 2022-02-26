@@ -6,10 +6,12 @@ import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: '/user/registration', pathMatch: 'full'},
+  {path:'', redirectTo: '/user/login', pathMatch: 'full'},
   {path:'home', component:HomeComponent, canActivate:[AuthGuard]},
+  {path: 'settings', component: SettingsComponent},
   {
     path: 'user',component:UserComponent,
     children: [

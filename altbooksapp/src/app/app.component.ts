@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -8,6 +10,5 @@ import { Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'altbooksapp';
-
 
 }
