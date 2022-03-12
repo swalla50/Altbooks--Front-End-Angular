@@ -23,6 +23,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { NgxPlaidLinkModule } from 'ngx-plaid-link';
 import { SharedService } from './shared.service';
 import { QuestionComponent } from './Components/question/question.component';
+import { QuestionadduserComponent } from './Components/questionadduser/questionadduser.component';
+
 
 
 
@@ -35,6 +37,7 @@ import { QuestionComponent } from './Components/question/question.component';
     LoginComponent,
     SettingsComponent,
     QuestionComponent,
+    QuestionadduserComponent
 
   ],
   imports: [

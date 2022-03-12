@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { faBars, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
@@ -22,6 +22,7 @@ import { UserService } from '../shared/user.service';
 import { FinDataService } from '../fin-data.service';
 import 'chartjs-adapter-moment';
 import { NgForm } from '@angular/forms';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 export interface CollapsibleItem { 
   label: string; 
@@ -58,7 +59,7 @@ export interface CollapsibleItem {
 })
 export class HomeComponent implements OnInit {
   
-  
+ 
 
   chart = <any>[];
 
@@ -89,12 +90,14 @@ export class HomeComponent implements OnInit {
   
   showDiv: boolean = false;
   newfeedpost: any;
-  
+  public response!: { dbPath: '' };
+  allReplies: any
   finData : any ;
   allUsers : any;
   allFeeds: any;
   makePost: any
   userFeed: any;
+  userreplyFeed: any;
   toggleDiv() {
     this.showDiv = this.showDiv? false : true;
   }
@@ -105,12 +108,20 @@ export class HomeComponent implements OnInit {
     FullName: string | undefined;
     postSubject: string | undefined;
     postTime: string | undefined;
+    postUserPic: string | undefined;
 
 
   constructor(public service:UserService, private router:Router, private _finData: FinDataService, public allservice:SharedService, private toastr: ToastrService) { 
     Chart.register(...registerables)
   }
-
+  public createImgPath =(serverPath: string) => {
+    return`http://localhost:5000/${serverPath}`;
+  }
+  //Upload property
+  public uploadFinished = (event: { dbPath: ""; }) =>
+  {
+    this.response = event;
+  }
   menuItems: CollapsibleItem[] = [
     { label: 'First', text: 'Lorem Ipsum', state: true }
    ];
@@ -144,37 +155,86 @@ export class HomeComponent implements OnInit {
 
        newtoday = this.mm + '/' + this.dd + '/' + this.yyyy;
        
+       
        onSubmit(){
         this.service.getUserProfile().subscribe(loggeduser=>{
           this.user = loggeduser;
-          
-          
-
-          
+          this.user.userPic
+          console.log("post User pic", this.user.userPic)
 
           var val = {
             postMessage:this.postMessage,
             postImage:this.postImage,
             postSubject: this.postSubject,
             FullName:this.FullName = this.user.fullName,
-            postTime: this.postTime = this.newtoday
-          }
-          
-          this.allservice.postCPFeed(val).subscribe(res =>{
-            res;
-            return this.userFeed
-          });
+            postTime: this.postTime = this.newtoday,
+            postUserPic: this.postUserPic = this.service.PhotoURL+'/'+this.user.userPic
 
-          this.toastr.success("Post Created !")
-        
+          } 
+          this.allservice.postCPFeed(val).subscribe(res =>{
+            this.userFeed=res;
+            console.log("User feed with image:",this.userFeed.postUserPic)
+            return this.userFeed
+            
+          });
+          this.toastr.success("Post Created !")  
         });
       }
 
+      
+
+      @Input()
+      commenttext: string | undefined;
+      parentcommentid!: number;
+      postreplyUserPic: string | undefined;
+      
+
+      onPostReply(value: any){
+        this.service.getUserProfile().subscribe(loggeduser=>{
+          this.user = loggeduser;
+          this.user.userPic
+          console.log("post User pic", this.user.userPic)
+          this.allservice.getCPFeed().subscribe(feeddata=>{
+            this.allFeed = feeddata;
+            
+          var val = {
+            commenttext:this.commenttext,
+            parentcommentid:value,
+            FullName: this.FullName = this.user.fullName,
+            postreplyUserPic: this.postUserPic = this.service.PhotoURL+'/'+this.user.userPic
+
+          } 
+          this.allservice.postCPReply(val).subscribe(res =>{
+            this.userreplyFeed=res;
+            console.log("User feed with image:",this.userreplyFeed.postreplyUserPic)
+            return this.userreplyFeed
+            
+          });
+          this.toastr.success("Post Created !")  
+        });
+      })
+      }
+      userPic:any ;
   ngOnInit(): void {
     this.allservice.getCPFeed().subscribe(feeddata=>{
       this.allFeed = feeddata;
+
+      
       console.log("Company Feed: ", this.allFeed)
+
+      this.allservice.getFeedReply().subscribe(data =>{
+        this.allReplies = data;
+        let Feeddataid = feeddata.map(feeddata => feeddata.cfId)
+
+        console.log("ourfeed id: ",Feeddataid)
+        
+        let r = data.map(data => data.parentcommentid)
+        console.log("feed parents", this.allReplies)
+        console.log("feedId:", r)
+        console.log("All of the replies", this.allReplies)
+      })
      });
+    
     
     
     this.allservice.getAllUserNames().subscribe(data=>{
@@ -184,8 +244,12 @@ export class HomeComponent implements OnInit {
 
     this.service.getUserProfile().subscribe(data=>{
       this.userDetails = data;
+
+      this.userDetails.userPic = this.service.PhotoURL+'/'+this.userDetails.userPic
+      
+      console.log("user pic: ",this.userDetails.userPic)
+
   
-    
       const user = this.userDetails.orgName;
       this._finData.dailyFinance().subscribe(
         res=> {
@@ -200,7 +264,8 @@ export class HomeComponent implements OnInit {
           console.log("newdate: ", difference)
         
           const ctx = 'canvas';
-          const maxDate = Date.now();
+          const maxDate = new Date();
+          const minDate = maxDate.setDate(maxDate.getDate() - 7);
     
           
           this.chart = new Chart(ctx, {
@@ -251,7 +316,8 @@ export class HomeComponent implements OnInit {
                   time:{
                     unit: 'day'
                     },
-                  max: maxDate
+                    min: minDate,
+                    max: Date.now()
                     
                     
                 },

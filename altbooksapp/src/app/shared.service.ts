@@ -54,6 +54,12 @@ postCPFeed(val: any):Observable<any[]>{
 
   getCPFeed():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl+'GetCP/getCPFeed')
+  }
+  getFeedReply():Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+'getcomment/getcomment')
   } 
+  postCPReply(val: any):Observable<any[]>{
+    return this.http.post<any>(this.APIUrl+ 'AddComment/addCommentitem', val)
+  }
   
 }

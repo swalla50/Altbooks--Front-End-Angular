@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpHeaders } from '@angular/common/http';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 
@@ -12,6 +13,8 @@ export class UserService {
 
   constructor(private fb:FormBuilder, private http: HttpClient) { }
   readonly BaseURI = 'https://webapi20220126203702.azurewebsites.net/api';
+  readonly PhotoURL = 'https://webapi20220126203702.azurewebsites.net/Images';
+  
 
   formModel = this.fb.group({
     UserName : ['', Validators.required],
@@ -24,11 +27,17 @@ export class UserService {
     PhoneNumber : ['', Validators.required],
     orgName : ['', Validators.required],
     orgType : ['', Validators.required],
-    UserRole : ['',Validators.required]
+    UserRole : ['',Validators.required],
+    userPic : ['',Validators.required],
+    MyUserId: ['', Validators.required],
+    
 
   });
 
+  
   register(){
+
+
     var body = {
       UserName: this.formModel.value.UserName,
       Email: this.formModel.value.Email,
@@ -37,18 +46,30 @@ export class UserService {
       PhoneNumber: this.formModel.value.PhoneNumber,
       orgName: this.formModel.value.orgName,
       orgType: this.formModel.value.orgType,
-      UserRole: this.formModel.value.UserRole
+      UserRole: this.formModel.value.UserRole,
+      userPic: this.formModel.value.userPic = "anonymous.png"
     };
     return this.http.post(this.BaseURI+'/ApplicationUser/Register', body);
+  }
+
+  uploadImage(val: any){
+    return this.http.post(this.BaseURI + '/ApplicationUser/saveFile', val,{
+      reportProgress: true,
+      observe: 'events'
+    })
   }
 
   login(formData:any){
     return this.http.post(this.BaseURI+'/ApplicationUser/Login', formData);
   }
 
+  editUserProfile(editbody:any){
+    
+    return this.http.put(this.BaseURI+'/ApplicationUser/editUser', editbody);
+  }
   getUserProfile():Observable<any[]>{
     var tokenHeader = new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('token')})
-    return this.http.get<any>(this.BaseURI+'/UserProfile', {headers : tokenHeader}).pipe(share());
+    return this.http.get<any>(this.BaseURI + '/UserProfile', {headers : tokenHeader}).pipe(share());
   }
   // comparePasswords(fb: FormGroup){
   //   let confirmPasswordCtrl = fb.get('ConfirmPassword');

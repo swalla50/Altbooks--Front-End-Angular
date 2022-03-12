@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient, HttpEventType } from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,6 +14,12 @@ import { ToastrService } from 'ngx-toastr';
 export class RegistrationComponent implements OnInit {
 
   faArrowCircleLeft = faArrowCircleLeft;
+
+
+  
+  
+ 
+
 
   constructor(public service: UserService, private toastr:ToastrService) { }
 
