@@ -587,3 +587,6 @@ button#dropdownMenuButton {
     height: 70px;
     margin-left:15px;
 }
+a#logout {
+    cursor: pointer;
+}
