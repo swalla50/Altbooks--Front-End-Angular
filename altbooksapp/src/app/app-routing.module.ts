@@ -7,11 +7,13 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SettingsComponent } from './settings/settings.component';
+import { PayrollComponent } from './payroll/payroll.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/user/login', pathMatch: 'full'},
   {path:'home', component:HomeComponent, canActivate:[AuthGuard]},
   {path: 'settings', component: SettingsComponent},
+  {path: 'payroll', component: PayrollComponent},
   {
     path: 'user',component:UserComponent,
     children: [

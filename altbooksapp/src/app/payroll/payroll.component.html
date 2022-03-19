@@ -1,8 +1,8 @@
 <div class="home">
     <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
-          <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a class="nav-links">Business Overview</a> </li>
+          <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a href = "/home"class="nav-links">Business Overview</a> </li>
           <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a href = "payroll" class="nav-links"> Payroll </a> </li>
+          <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a class="nav-links"> Payroll </a> </li>
           <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
           <button class= 'nav-list' (click)="onLogout()"> Logout </button>
     </div>
@@ -28,67 +28,41 @@
             </div>
             <div class= 'dash-container'>
               <div class= 'overview-header'>
-                <h2> Overview </h2>
+                <h2> Payroll </h2>
               </div>
-              <div class= row1-analytics>
-                <div class= 'sales' *ngIf="chart">
-                  <canvas height="200px" width="1300px" id="canvas"> {{ chart }}</canvas>
-                </div>
-              </div>
-              <div class= 'second-row'>
-              <div class= 'left-container'>
-                <h3 class='Banking-feed-heading'>Banking Information</h3>
-                <div class ='left-feed scroller'>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                  <li class='bank-feed-item'> <fa-icon class='menu-toggle'  [icon]="faDollarSign" size ='sm'></fa-icon> Bank Item</li>
-                </div>
-            </div>
-            
-            <div class="right-component-container">
-              <h3 class='Components'>Your quick links</h3>
-              <div class = 'right-components'>
-                <div class='row1-components'>
-                  <div id='component-item' class ='bank-component'>
-                    <p>4</p>
-                  </div>
-                  <div id='component-item' class = 'Payroll-component'>
-                    <p>4</p>
-                  </div>
-                </div>
-                <div class='row2-components'>
-                  <div id='component-item' class ='bookkeeping-component'>
-                    <div [routerLink]="['settings']">
-                      <a class="settingsLink" href="/settings">
-                      <h3 class="widget-card-header">Settings</h3>
-                      <fa-icon [routerLink]="['settings']" class='setting-icon'  [icon]="faCogs" size ='9x'></fa-icon>
-                      </a>
-                    </div>
-                  </div>
-                  <div id='component-item' class = 'other-component' (click)="onLogout()">
-                    <p>4</p>
-                  </div>
+              <div class ='user-pay-table-container'>
+                  <div class='pay-table'>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Time Worked</th>
+                                <th>Pay Per Hour</th>
+                                <th>Payment</th>
+                                <th class= 'confirm-pay-head'>Confirm Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let users of allUsers; let time of timelist; let pay of paylist ">
+                                <td>{{users.myUserId}}</td>
+                                <td>{{users.fullName}}</td>
+                                <td>{{time.timeWorked}} hr(s)</td>
+                                <td ><fa-icon class="pay-dolsign"  [icon]="faDollarSign" size ='lg'></fa-icon>{{pay.payperHour}}/Hr</td>
+                                <td><fa-icon class="pay-dolsign"  [icon]="faDollarSign" size ='lg'></fa-icon>{{pay.payment}}</td>
+                                <button type="button" class= "btn btn-light mr-2 pay-btn" 
+                                   
+                                >
+                                <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon>
+                                </button>
+                            </tr>
+                        </tbody>
+                    </table>
+                          
+                      
                 </div>
               </div>
-            </div>
-          </div>   
+                 
             </div>
       </div>
     </div>

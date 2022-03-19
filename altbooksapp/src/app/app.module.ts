@@ -24,6 +24,8 @@ import { NgxPlaidLinkModule } from 'ngx-plaid-link';
 import { SharedService } from './shared.service';
 import { QuestionComponent } from './Components/question/question.component';
 import { QuestionadduserComponent } from './Components/questionadduser/questionadduser.component';
+import { PayrollComponent } from './payroll/payroll.component';
+import { TimesheetComponent } from './timesheet/timesheet.component';
 
 
 
@@ -37,7 +39,9 @@ import { QuestionadduserComponent } from './Components/questionadduser/questiona
     LoginComponent,
     SettingsComponent,
     QuestionComponent,
-    QuestionadduserComponent
+    QuestionadduserComponent,
+    PayrollComponent,
+    TimesheetComponent
 
   ],
   imports: [

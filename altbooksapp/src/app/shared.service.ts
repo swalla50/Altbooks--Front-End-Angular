@@ -25,7 +25,12 @@ export class SharedService {
 
 
 
-
+  getTimeSheet():Observable<any[]>{
+    return this.http.get<any>(this.APIUrl+'/TimeSheet/gettimesheet');
+  }
+  getPayroll():Observable<any[]>{
+    return this.http.get<any>(this.APIUrl+'/payroll/getpay');
+  }
 
 postCPFeed(val: any):Observable<any[]>{
   return this.http.post<any>(this.APIUrl+ 'AddCP/addCPitem', val)
