@@ -29,6 +29,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res.token);
         this.toastr.success('Login Success');
         this.router.navigate(['/home']);
+        while (localStorage.justOnce = false) {
+          localStorage.setItem('justOnce', 'true');
+          console.log("just once: ", localStorage.justOnce)
+          
+      }
       },
       err =>{
         if(err.status == 400)

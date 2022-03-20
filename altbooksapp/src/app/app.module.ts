@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomDatePipe } from './fresh.pipe';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,8 @@ import { QuestionComponent } from './Components/question/question.component';
 import { QuestionadduserComponent } from './Components/questionadduser/questionadduser.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatTabsModule} from '@angular/material/tabs'
 
 
 
@@ -41,7 +44,9 @@ import { TimesheetComponent } from './timesheet/timesheet.component';
     QuestionComponent,
     QuestionadduserComponent,
     PayrollComponent,
-    TimesheetComponent
+    TimesheetComponent,
+    CustomDatePipe,
+    
 
   ],
   imports: [
@@ -57,7 +62,8 @@ import { TimesheetComponent } from './timesheet/timesheet.component';
     ToastrModule.forRoot({
       positionClass :'toast-top-right'
     }),
-    NgxPlaidLinkModule
+    NgxPlaidLinkModule,
+    MatTabsModule
   ],
   providers: [UserService, FinDataService, SharedService,{
     provide: HTTP_INTERCEPTORS,

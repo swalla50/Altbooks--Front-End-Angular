@@ -19,6 +19,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { SharedService } from '../shared.service';
+import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -70,6 +71,7 @@ export class SettingsComponent implements OnInit {
   faCaretRight = faCaretRight;
   faCaretLeft = faCaretLeft;
   faPlus = faPlus;
+  faBusinessTime = faBusinessTime;
 
   public isVisited = false;
 

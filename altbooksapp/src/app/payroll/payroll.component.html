@@ -1,10 +1,11 @@
 <div class="home">
     <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
-          <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a href = "/home"class="nav-links">Business Overview</a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a class="nav-links"> Payroll </a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
-          <button class= 'nav-list' (click)="onLogout()"> Logout </button>
+      <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a class="nav-links">Business Overview</a> </li>
+      <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
+      <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a href = "payroll" class="nav-links"> Payroll </a> </li>
+      <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+      <li class= 'nav-list'>  <fa-icon [icon]="faBusinessTime" size ='lg'></fa-icon> <a href="timesheet"class="nav-links">Time Sheet</a></li>
+      <button class= 'nav-list' (click)="onLogout()"> Logout </button>
     </div>
     <div class='canvas-container'>
       <div class= 'canvas scroller'>

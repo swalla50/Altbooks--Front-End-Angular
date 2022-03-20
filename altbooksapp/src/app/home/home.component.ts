@@ -13,6 +13,8 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Chart, registerables} from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
+import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -75,9 +77,11 @@ export class HomeComponent implements OnInit {
   faReceipt = faReceipt;
   faDollarSign = faDollarSign;
   faCogs = faCogs;
-  faCaretLeft =faCaretLeft;
+  faCaretLeft = faCaretLeft;
   faCaretRight = faCaretRight;
   faPlus = faPlus;
+  faBusinessTime = faBusinessTime;
+  faExclamation = faExclamation;
   
 
   public isVisited = false;
@@ -160,7 +164,6 @@ export class HomeComponent implements OnInit {
         this.service.getUserProfile().subscribe(loggeduser=>{
           this.user = loggeduser;
           this.user.userPic
-          console.log("post User pic", this.user.userPic)
 
           var val = {
             postMessage:this.postMessage,
@@ -173,7 +176,7 @@ export class HomeComponent implements OnInit {
           } 
           this.allservice.postCPFeed(val).subscribe(res =>{
             this.userFeed=res;
-            console.log("User feed with image:",this.userFeed.postUserPic)
+
             return this.userFeed
             
           });
@@ -193,7 +196,6 @@ export class HomeComponent implements OnInit {
         this.service.getUserProfile().subscribe(loggeduser=>{
           this.user = loggeduser;
           this.user.userPic
-          console.log("post User pic", this.user.userPic)
           this.allservice.getCPFeed().subscribe(feeddata=>{
             this.allFeed = feeddata;
             
@@ -206,32 +208,42 @@ export class HomeComponent implements OnInit {
           } 
           this.allservice.postCPReply(val).subscribe(res =>{
             this.userreplyFeed=res;
-            console.log("User feed with image:",this.userreplyFeed.postreplyUserPic)
             return this.userreplyFeed
             
           });
           this.toastr.success("Post Created !")  
+          this.allservice.getFeedReply().subscribe(data =>{
+            this.allReplies = data;
+    
+            
+            let r = data.map(data => data.parentcommentid)
+           
+          })
         });
       })
       }
       userPic:any ;
   ngOnInit(): void {
+      while(localStorage.justOnce === 'false')
+      {
+        localStorage.setItem ('justOnce','true')
+        window.location.reload()
+        console.log("whole loal:", localStorage)
+      }
+  
     this.allservice.getCPFeed().subscribe(feeddata=>{
       this.allFeed = feeddata;
 
       
-      console.log("Company Feed: ", this.allFeed)
+     
 
       this.allservice.getFeedReply().subscribe(data =>{
         this.allReplies = data;
         let Feeddataid = feeddata.map(feeddata => feeddata.cfId)
 
-        console.log("ourfeed id: ",Feeddataid)
         
         let r = data.map(data => data.parentcommentid)
-        console.log("feed parents", this.allReplies)
-        console.log("feedId:", r)
-        console.log("All of the replies", this.allReplies)
+       
       })
      });
     
@@ -239,7 +251,6 @@ export class HomeComponent implements OnInit {
     
     this.allservice.getAllUserNames().subscribe(data=>{
       this.allUsers = data;
-      console.log("all users: ", this.allUsers) 
      });
 
     this.service.getUserProfile().subscribe(data=>{
@@ -247,7 +258,6 @@ export class HomeComponent implements OnInit {
 
       this.userDetails.userPic = this.service.PhotoURL+'/'+this.userDetails.userPic
       
-      console.log("user pic: ",this.userDetails.userPic)
 
   
       const user = this.userDetails.orgName;
@@ -261,7 +271,6 @@ export class HomeComponent implements OnInit {
           
           // let newdate = new Date(alldates).toLocaleDateString('en-US', {hour12: false})
           
-          console.log("newdate: ", difference)
         
           const ctx = 'canvas';
           const maxDate = new Date();
@@ -345,11 +354,9 @@ export class HomeComponent implements OnInit {
           })
 
           const userInfo = res.filter(res => res.orgName === user)
-            console.log("This is the financial data: ", userInfo);
         }
         
       )
-      console.log("Logged in user information: ", data); 
         })
       //Logs the returned Filtered data matching the specifc userID in the Database
     };
@@ -363,6 +370,18 @@ export class HomeComponent implements OnInit {
 
   onLogout(){
     localStorage.removeItem('token');
+    localStorage.setItem('justOnce', 'false');
     this.router.navigate(['/user/login']);
+    console.log("just once: ",localStorage.justOnce)
+  }
+
+  refreshreplies(){
+    this.allservice.getFeedReply().subscribe(data =>{
+      this.allReplies = data;
+
+      
+      let r = data.map(data => data.parentcommentid)
+     
+    })
   }
 }
