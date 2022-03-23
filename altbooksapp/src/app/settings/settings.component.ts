@@ -20,6 +20,8 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { SharedService } from '../shared.service';
 import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -72,6 +74,7 @@ export class SettingsComponent implements OnInit {
   faCaretLeft = faCaretLeft;
   faPlus = faPlus;
   faBusinessTime = faBusinessTime;
+  faExclamation = faExclamation;
 
   public isVisited = false;
 

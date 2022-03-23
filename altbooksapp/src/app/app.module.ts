@@ -28,7 +28,11 @@ import { QuestionadduserComponent } from './Components/questionadduser/questiona
 import { PayrollComponent } from './payroll/payroll.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatTabsModule} from '@angular/material/tabs'
+import {MatTabsModule} from '@angular/material/tabs';
+import { NgChartsModule } from 'ng2-charts';
+import { SevendaychartComponent } from './sevendaychart/sevendaychart.component';
+import { MonthchartComponent } from './monthchart/monthchart.component';
+import { YearchartComponent } from './yearchart/yearchart.component';
 
 
 
@@ -46,6 +50,9 @@ import {MatTabsModule} from '@angular/material/tabs'
     PayrollComponent,
     TimesheetComponent,
     CustomDatePipe,
+    SevendaychartComponent,
+    MonthchartComponent,
+    YearchartComponent,
     
 
   ],
@@ -63,7 +70,8 @@ import {MatTabsModule} from '@angular/material/tabs'
       positionClass :'toast-top-right'
     }),
     NgxPlaidLinkModule,
-    MatTabsModule
+    MatTabsModule,
+    NgChartsModule
   ],
   providers: [UserService, FinDataService, SharedService,{
     provide: HTTP_INTERCEPTORS,

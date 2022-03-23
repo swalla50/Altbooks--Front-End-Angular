@@ -9,6 +9,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { SettingsComponent } from './settings/settings.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
+import { SevendaychartComponent } from './sevendaychart/sevendaychart.component';
+import { MonthchartComponent } from './monthchart/monthchart.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/user/login', pathMatch: 'full'},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'settings', component: SettingsComponent},
   {path: 'payroll', component: PayrollComponent},
   {path: 'timesheet', component: TimesheetComponent},
+  {path: 'sevendaychart', component: SevendaychartComponent},
+  {path: 'monthdaychart', component: MonthchartComponent},
   {
     path: 'user',component:UserComponent,
     children: [

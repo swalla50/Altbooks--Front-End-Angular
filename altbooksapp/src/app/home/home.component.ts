@@ -64,6 +64,7 @@ export class HomeComponent implements OnInit {
  
 
   chart = <any>[];
+  chart2 = <any>[];
 
   userDetails: any;
   allFeed: any;
@@ -272,7 +273,7 @@ export class HomeComponent implements OnInit {
           // let newdate = new Date(alldates).toLocaleDateString('en-US', {hour12: false})
           
         
-          const ctx = 'canvas';
+          var ctx = <HTMLCanvasElement> document.getElementById("canvas");
           const maxDate = new Date();
           const minDate = maxDate.setDate(maxDate.getDate() - 7);
     
@@ -352,6 +353,84 @@ export class HomeComponent implements OnInit {
             }    
             }
           })
+
+          // var sctx = <HTMLCanvasElement> document.getElementById("canvas2");    
+          
+          // this.chart = new Chart(sctx, {
+          //   type: 'bar',
+          //   data: {
+          //     labels: alldates,
+          //     datasets:[
+                
+          //       {
+          //         data: sales,
+          //         borderColor: '#1976d2',
+          //         backgroundColor: '#1976d2cc',
+          //         borderWidth:1,
+          //         hoverBorderWidth: 3,
+          //         label:'Gross Profit',
+          //         barThickness: 50,
+          //         borderRadius:30
+          //       },
+          //       {
+          //         data: cost,
+          //         borderColor: '#5c5c5c',
+          //         backgroundColor: '#00000073',
+          //         borderWidth:1,
+          //         hoverBorderWidth: 3,
+          //         label:'Total Costs',
+          //         pointStyle: 'rectRot',
+          //         barThickness: 50,
+          //         borderRadius:30
+          //       },
+          //       {
+          //         data: difference,
+          //         borderColor: '#5c5c5c',
+          //         backgroundColor: '#19d249a3',
+          //         borderWidth:1,
+          //         hoverBorderWidth: 3,
+          //         label:'Profit',
+          //         pointStyle: 'rectRot',
+          //         barThickness: 50,
+          //         borderRadius:30
+          //       },
+          //     ]
+          //   },
+          //   options: {
+          //     scales: {
+          //       x:{
+          //         display: true,
+          //         type: 'time',
+          //         time:{
+          //           unit: 'day'
+          //           },
+          //           min: minDate,
+          //           max: Date.now()
+                    
+                    
+          //       },
+                
+          //       y: {
+          //         display:true,
+          //         max: 2000,
+          //         min: 0,
+          //         ticks: {
+                     
+          //           stepSize: 500   // minimum will be 0, unless there is a lower value.
+
+          //       }
+          //       }
+          //     },
+          //     plugins: {
+          //       legend: {
+          //           display: true,
+          //           labels: {
+          //               color: 'black'
+          //           }
+          //       }
+          //   }    
+          //   }
+          // })
 
           const userInfo = res.filter(res => res.orgName === user)
         }

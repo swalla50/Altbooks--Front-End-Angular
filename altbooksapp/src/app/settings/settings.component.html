@@ -17,11 +17,20 @@
               <h3 class='user-welcome-start'>Welcome&nbsp;</h3><h3 class="user-welcome-banner"> {{userDetails.fullName}}
                 <div class="dropdown">
                   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                    <img class="user-pic" [src]= "userDetails.userPic" alt="profile picture" style ="width:70px; height:70px;"/>
+                    <img class="user-pic" [src]= "userDetails.userPic" alt="profile picture" style ="width:60px; height:60px;"/>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item"href="/settings">Settings</a>
-                    <a class="dropdown-item" id="logout-drp" (click)="onLogout()">Logout</a>
+                    <a class="dropdown-item" id="logout"(click)="onLogout()">Logout</a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                    <fa-icon class='notification-btn'  [icon]="faExclamation" size ='2x'></fa-icon>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-item"href="/settings">New Message Notification</div>
+                    
                   </div>
                 </div>
               </h3>

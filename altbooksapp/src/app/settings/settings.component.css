@@ -310,7 +310,7 @@ h3.Components.ng-tns-c23-0{
 svg.svg-inline--fa.fa-cogs.fa-w-20.fa-5x {
     vertical-align: -8rem;
 }
-button.nav-list.ng-tns-c66-0{
+button.nav-list.ng-tns-c69-0{
     border-radius: 20px;
     background: #1976d2;
     border: solid 1px white;
@@ -336,7 +336,7 @@ svg.svg-inline--fa.fa-bars.fa-w-14.fa-lg {
     color: white;
   }
 
-.addUser.ng-tns-c66-0 {
+.addUser.ng-tns-c69-0 {
     width: 300px;
     height: 300px;
     background: #1976d2;
@@ -344,7 +344,7 @@ svg.svg-inline--fa.fa-bars.fa-w-14.fa-lg {
     margin: 30px;
     box-shadow: rgb(0 0 0 / 30%) 0px 25px 15px 0px;
 }
-.addUser.ng-tns-c66-0:hover{
+.addUser.ng-tns-c69-0:hover{
     transform: scale(.9);
     -webkit-transition: all .1s ease;
     transition: all 300ms ease-in-out;
@@ -352,7 +352,7 @@ svg.svg-inline--fa.fa-bars.fa-w-14.fa-lg {
     padding: 50px;
 }
 
-.changeMy.ng-tns-c66-0 {
+.changeMy.ng-tns-c69-0 {
     width: 300px;
     height: 300px;
     background: #1976d2;
@@ -360,14 +360,14 @@ svg.svg-inline--fa.fa-bars.fa-w-14.fa-lg {
     margin: 30px;
     box-shadow: rgb(0 0 0 / 30%) 0px 25px 15px 0px;
 }
-.changeMy.ng-tns-c66-0:hover{
+.changeMy.ng-tns-c69-0:hover{
     transform: scale(.9);
     -webkit-transition: all .1s ease;
     transition: all 300ms ease-in-out;
     cursor: pointer;
     padding: 50px;
 }
-.manageCompany.ng-tns-c66-0 {
+.manageCompany.ng-tns-c69-0 {
     width: 300px;
     height: 300px;
     background: #1976d2;
@@ -375,34 +375,34 @@ svg.svg-inline--fa.fa-bars.fa-w-14.fa-lg {
     margin: 30px;
     box-shadow: rgb(0 0 0 / 30%) 0px 25px 15px 0px;
 }
-.manageCompany.ng-tns-c66-0:hover{
+.manageCompany.ng-tns-c69-0:hover{
     transform: scale(.9);
     -webkit-transition: all .1s ease;
     transition: all 300ms ease-in-out;
     cursor: pointer;
     padding: 50px;
 }
-.row1-analytics.ng-tns-c66-0 {
+.row1-analytics.ng-tns-c69-0 {
     display: inline-flex;
     margin: 20px;
 }
-fa-icon.ng-fa-icon.add-user.ng-tns-c66-0 {
+fa-icon.ng-fa-icon.add-user.ng-tns-c69-0 {
     color: white;
 }
 
-fa-icon.ng-fa-icon.update-user-icon.ng-tns-c66-0{
+fa-icon.ng-fa-icon.update-user-icon.ng-tns-c69-0{
     color: white;
 }
 
-fa-icon.ng-fa-icon.update-company.ng-tns-c66-0{
+fa-icon.ng-fa-icon.update-company.ng-tns-c69-0{
     color: white;
 }
-h3.setting-widget-heading.ng-tns-c66-0 {
+h3.setting-widget-heading.ng-tns-c69-0 {
     color: white;
     font-size: 20px;
 }
 
-form.addUser-form.ng-tns-c66-0.ng-invalid.ng-dirty.ng-touched {
+form.addUser-form.ng-tns-c69-0.ng-invalid.ng-dirty.ng-touched {
     overflow-y: scroll;
     height: 500px;
     padding: 1%;
@@ -434,7 +434,7 @@ form.addUser-form.ng-tns-c66-0.ng-invalid.ng-dirty.ng-touched {
     margin-left: -5px;
 }
 
-.news-feed.ng-tns-c66-0 {
+.news-feed.ng-tns-c69-0 {
     background: #333333;
     transform: translateX(-30px);
     margin-top: 10vh;
@@ -448,7 +448,7 @@ form.addUser-form.ng-tns-c66-0.ng-invalid.ng-dirty.ng-touched {
 }
 
 
-.news-feed.ng-tns-c66-0.visited {
+.news-feed.ng-tns-c69-0.visited {
     background: #333333;
     transform: translateX(-477px);
     margin-top: 10vh;
@@ -460,17 +460,17 @@ form.addUser-form.ng-tns-c66-0.ng-invalid.ng-dirty.ng-touched {
     transition: all 200ms ease-in-out;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
 }
-.toggle-col.ng-tns-c66-0 {
+.toggle-col.ng-tns-c69-0 {
     align-self: center;
     height: 100%;
 }
 
-button.feed-toggle.ng-tns-c66-0 {
+button.feed-toggle.ng-tns-c69-0 {
     background: transparent;
     border: none;
     height: 100%;
 }
-.news-feed-content.ng-tns-c66-0 {
+.news-feed-content.ng-tns-c69-0 {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -482,12 +482,11 @@ button.feed-toggle.ng-tns-c66-0 {
     margin-left: 5px;
     border-radius: 20px;
 }
-.news-feed-container.ng-tns-c66-0 {
+.news-feed-container.ng-tns-c69-0 {
     height: 100%;
 }
-img.user-pic.ng-tns-c66-0 {
+img.user-pic.ng-tns-c69-0 {
     margin-left: 20px;
-    border: solid;
     border-radius: 50px;
 }
 
@@ -498,7 +497,7 @@ img.user-pic.ng-tns-c66-0 {
     line-height: 30px;
 }
 
-.news-feed.ng-tns-c66-0 {
+.news-feed.ng-tns-c69-0 {
     background: #333333;
     transform: translateX(-30px);
     margin-top: 10vh;
@@ -513,7 +512,7 @@ img.user-pic.ng-tns-c66-0 {
 }
 
 
-.news-feed.ng-tns-c66-0.visited {
+.news-feed.ng-tns-c69-0.visited {
     background: #333333;
     transform: translateX(-477px);
     margin-top: 10vh;
@@ -527,17 +526,17 @@ img.user-pic.ng-tns-c66-0 {
     transition: all 200ms ease-in-out;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
 }
-.toggle-col.ng-tns-c66-0 {
+.toggle-col.ng-tns-c69-0 {
     align-self: center;
     height: 100%;
 }
 
-button.feed-toggle.ng-tns-c66-0 {
+button.feed-toggle.ng-tns-c69-0 {
     background: transparent;
     border: none;
     height: 100%;
 }
-.news-feed-content.ng-tns-c66-0 {
+.news-feed-content.ng-tns-c69-0 {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -550,18 +549,18 @@ button.feed-toggle.ng-tns-c66-0 {
     border-radius: 20px;
     overflow: hidden;
 }
-.news-feed-container.ng-tns-c66-0 {
+.news-feed-container.ng-tns-c69-0 {
     height: 100%;
 }
 
-.post-container.ng-tns-c66-0 {
+.post-container.ng-tns-c69-0 {
     height: fit-content;
     background: #8da4f5;
     border-radius: 5px;
     box-shadow: rgb(0 0 0 / 45%) 0px 10px 15px 0px;
     margin-bottom: 10px;
 }
-.user-post-name.ng-tns-c66-0 {
+.user-post-name.ng-tns-c69-0 {
     text-align: left;
     padding: 15px;
     color: white;
@@ -571,7 +570,7 @@ button.feed-toggle.ng-tns-c66-0 {
     width: 100%;
 }
 
-.post-content.ng-tns-c66-0 {
+.post-content.ng-tns-c69-0 {
     color: black;
     background-color: white;
     margin-inline: 1%;
@@ -581,24 +580,24 @@ button.feed-toggle.ng-tns-c66-0 {
     border-radius: 10px;
     overflow-y: scroll;
 }
-.news-feed-container.ng-tns-c66-0 {
+.news-feed-container.ng-tns-c69-0 {
     overflow-y: scroll;
     padding-inline: 4%;
     padding: 15px;
 }
 
-.addFeed.ng-tns-c66-0:hover{
+.addFeed.ng-tns-c69-0:hover{
     transform: translateY(-10px);
     -webkit-transition: all 1s ease;
     transition: all 300ms ease-in-out;
     cursor: pointer;
 }
-h3.feed-heading.ng-tns-c66-0 {
+h3.feed-heading.ng-tns-c69-0 {
     font-family: 'Ubuntu';
     font-weight: 500;
 }
 
-app-questionadduser.ng-tns-c66-0 {
+app-questionadduser.ng-tns-c69-0 {
     margin-left: 10px;
     color: #1976d2;
 }
@@ -607,20 +606,20 @@ h5#exampleModal2Label {
     color: #1976d2;
 }
 
-.user-post-time.ng-tns-c66-0 {
+.user-post-time.ng-tns-c69-0 {
     color: white;
     font-family: 'Ubuntu';
     font-size: 11px;
     text-align: left;
     margin-left: 17px;
 }
-.modal-content.ng-tns-c66-0 {
+.modal-content.ng-tns-c69-0 {
     border-radius: 15px;
 }
-.form-row.ng-tns-c66-0{
+.form-row.ng-tns-c69-0{
     justify-content: center;
 }
-button.btn-outline-primary.ng-tns-c66-0{
+button.btn-outline-primary.ng-tns-c69-0{
     border-radius: 15px;
     background:#1976d2 ;
     border: none;
@@ -629,23 +628,23 @@ button.btn-outline-primary.ng-tns-c66-0{
     color: white;
     box-shadow: rgb(0 0 0 / 45%) 0px 15px 15px 0px;
 }
-button.btn-outline-primary.ng-tns-c66-0:hover{
+button.btn-outline-primary.ng-tns-c69-0:hover{
     transform: translateY(6px);
     -webkit-transition: all 1s ease;
     transition: all 300ms ease-in-out;
 }
 
-.form-group.ng-tns-c66-0 {
+.form-group.ng-tns-c69-0 {
     width: 100%;
 }
-button.btn.btn-warning.ng-tns-c66-0{
+button.btn.btn-warning.ng-tns-c69-0{
     background: red;
     color: white;
     border:none;
     border-radius: 50px;
 }
 
-.post-subject.ng-tns-c66-0 {
+.post-subject.ng-tns-c69-0 {
     margin-left: 22px;
     width: 60%;
     line-height: 30px;
@@ -655,18 +654,18 @@ button.btn.btn-warning.ng-tns-c66-0{
 }
 
 
-.accordion-item.ng-tns-c66-0 {
+.accordion-item.ng-tns-c69-0 {
     background: #333333;
     color: white;
     border:none;
 }
-.accordion-button.ng-tns-c66-0.collapsed {
+.accordion-button.ng-tns-c69-0.collapsed {
     height: 10px;
     background: transparent;
     color:white;
   }
 
-  .accordion-button.ng-tns-c66-0 {
+  .accordion-button.ng-tns-c69-0 {
     height: 10px;
     background-color: #333;
     border-radius: 20px;
@@ -677,15 +676,15 @@ button.btn.btn-warning.ng-tns-c66-0{
     box-shadow: none;
   }
 
-  .reply-container.ng-tns-c66-0.ng-star-inserted {
+  .reply-container.ng-tns-c69-0.ng-star-inserted {
     display: flex;
 }
 
-h4.reply-fullname.ng-tns-c66-0 {
+h4.reply-fullname.ng-tns-c69-0 {
     margin-left: 10px;
 }
 
-h5.reply-content.ng-tns-c66-0 {
+h5.reply-content.ng-tns-c69-0 {
     margin-left: 8px;
     height: 10px;
     margin-top: 5px;
@@ -694,26 +693,21 @@ canvas#canvas {
     padding: 2%;
 }
 
-img.user-pic.ng-tns-c66-0 {
-    margin-left: 20px;
-    border: solid;
-    border-radius: 50px;
-}
-img.feed-user-pic.ng-tns-c66-0{
+img.feed-user-pic.ng-tns-c69-0{
     border: solid #333333;
     border-radius: 50px;
 }
 
-img.feed-user-pic.ng-tns-c66-0 {
+img.feed-user-pic.ng-tns-c69-0 {
     margin-right: 10px;
 }
 
-form.accordion-body.ng-tns-c66-0.ng-untouched.ng-pristine.ng-valid {
+form.accordion-body.ng-tns-c69-0.ng-untouched.ng-pristine.ng-valid {
     display: flex;
     flex-direction: column;
 }
 
-button.reply-btn.ng-tns-c66-0 {
+button.reply-btn.ng-tns-c69-0 {
     background: #8da4f5;
     border-radius: 20px;
     color: white;
@@ -721,32 +715,40 @@ button.reply-btn.ng-tns-c66-0 {
     margin-top: 5px;
 }
 
-button.reply-btn.ng-tns-c66-0:hover {
+button.reply-btn.ng-tns-c69-0:hover {
     transform: scale(1.1);
     -webkit-transition: all 1s ease;
     transition: all 300ms ease-in-out;
     
 }
-form.accordion-body.ng-tns-c66-0.ng-valid.ng-dirty.ng-touched {
+form.accordion-body.ng-tns-c69-0.ng-valid.ng-dirty.ng-touched {
     display: grid;
     flex-direction: column;
 }
 
-.news-feed-container.ng-tns-c66-0 {
+.news-feed-container.ng-tns-c69-0 {
     overflow-y: scroll;
     padding-inline: 4%;
     padding: 15px;
 }
-img.user-pic.ng-tns-c66-0{
+img.user-pic.ng-tns-c69-0{
     transform: translate(-33px, -7px);
 }
 button#dropdownMenuButton {
     border-radius: 50px;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     margin-left:15px;
 }
 a#logout-drp {
     cursor: pointer;
 }
 
+
+.dropdown-toggle::after {
+    content: none;
+} 
+
+fa-icon.ng-fa-icon.notification-btn.ng-tns-c69-0{
+    color: white;
+}
