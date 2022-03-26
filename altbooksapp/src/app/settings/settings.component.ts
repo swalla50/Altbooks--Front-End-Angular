@@ -14,6 +14,7 @@ import { faUserCog } from '@fortawesome/free-solid-svg-icons';
 import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -70,6 +71,7 @@ export class SettingsComponent implements OnInit {
   faCaretRight = faCaretRight;
   faCaretLeft = faCaretLeft;
   faPlus = faPlus;
+  faExclamation = faExclamation;
 
   public isVisited = false;
 

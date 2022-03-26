@@ -1,9 +1,10 @@
 <div class="home">
     <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
-          <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a class="nav-links">Business Overview</a> </li>
+          <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a href="home" class="nav-links">Business Overview</a> </li>
           <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
           <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a href = "payroll" class="nav-links"> Payroll </a> </li>
           <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+          <li class= 'nav-list'>  <fa-icon [icon]="faBusinessTime" size ='lg'></fa-icon> <a href="timesheet"class="nav-links">Time Sheet</a></li>
           <button class= 'nav-list' (click)="onLogout()"> Logout </button>
     </div>
     <div class='canvas-container'>
@@ -17,11 +18,20 @@
                 
                 <div class="dropdown">
                   <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                    <img class="user-pic" [src]= "userDetails.userPic" alt="profile picture" style ="width:70px; height:70px;"/>
+                    <img class="user-pic" [src]= "userDetails.userPic" alt="profile picture" style ="width:60px; height:60px;"/>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item"href="/settings">Settings</a>
                     <a class="dropdown-item" id="logout"(click)="onLogout()">Logout</a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                    <fa-icon class='notification-btn'  [icon]="faExclamation" size ='2x'></fa-icon>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-item"href="/settings">New Message Notification</div>
+                    
                   </div>
                 </div>
               </h3>
@@ -31,8 +41,27 @@
                 <h2> Overview </h2>
               </div>
               <div class= row1-analytics>
-                <div class= 'sales' *ngIf="chart">
-                  <canvas height="200px" width="1300px" id="canvas"> {{ chart }}</canvas>
+                <div class= 'sales' >
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">7-Day</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Month</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Year</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><app-sevendaychart></app-sevendaychart></div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><app-monthchart></app-monthchart></div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><app-yearchart></app-yearchart></div>
+                  </div>
+
+                 <div>
+                  <router-outlet></router-outlet>
+                </div>
                 </div>
               </div>
               <div class= 'second-row'>
@@ -119,6 +148,8 @@
             <div class='user-post-time'>
               {{post.postTime}}
             </div>
+<div class="accordion" id="accordionExample">
+
             <div class="accordion-item" >
               <div *ngFor="let item of allReplies;"    id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="reply-container" *ngIf="item.parentcommentid===post.cfId">
@@ -134,13 +165,16 @@
               </h2>
               <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <form  (submit)="onPostReply(post.cfId)" id= {{post.cfId}} class="accordion-body">
-                  <textarea [(ngModel)]="commenttext" name= "commenttext"  rows="3">
-                  </textarea>
-                  <button  class="reply-btn" type="submit" aria-expanded="false" aria-controls="flush-collapseOne">
-                  Reply
-                </button>
+                  <div class="input-group">
+                    <textarea type="text" class="reply-btn" [(ngModel)]="commenttext" name= "commenttext" placeholder="Reply to {{post.fullName}}'s post" aria-label="Recipient's username" aria-describedby="basic-addon2"></textarea>
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="submit">Reply</button>
+                    </div>
+                  </div>
               </form>
               </div>
+      </div>
+
             </div>
           </div>
           </div>
@@ -192,3 +226,4 @@
     </div>
     
   </div>
+  

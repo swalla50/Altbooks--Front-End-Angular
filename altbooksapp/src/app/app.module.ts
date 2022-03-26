@@ -20,12 +20,17 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { FinDataService } from './fin-data.service';
 import { SettingsComponent } from './settings/settings.component';
-import { NgxPlaidLinkModule } from 'ngx-plaid-link';
 import { SharedService } from './shared.service';
 import { QuestionComponent } from './Components/question/question.component';
 import { QuestionadduserComponent } from './Components/questionadduser/questionadduser.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { TimesheetComponent } from './timesheet/timesheet.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatTabsModule} from '@angular/material/tabs';
+import { NgChartsModule } from 'ng2-charts';
+import { SevendaychartComponent } from './Components/sevendaychart/sevendaychart.component';
+import { MonthchartComponent } from './Components/monthchart/monthchart.component';
+import { YearchartComponent } from './Components/yearchart/yearchart.component';
 
 
 
@@ -41,7 +46,11 @@ import { TimesheetComponent } from './timesheet/timesheet.component';
     QuestionComponent,
     QuestionadduserComponent,
     PayrollComponent,
-    TimesheetComponent
+    TimesheetComponent,
+    SevendaychartComponent,
+    MonthchartComponent,
+    YearchartComponent,
+    
 
   ],
   imports: [
@@ -57,7 +66,8 @@ import { TimesheetComponent } from './timesheet/timesheet.component';
     ToastrModule.forRoot({
       positionClass :'toast-top-right'
     }),
-    NgxPlaidLinkModule
+    MatTabsModule,
+    NgChartsModule
   ],
   providers: [UserService, FinDataService, SharedService,{
     provide: HTTP_INTERCEPTORS,

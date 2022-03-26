@@ -1,1 +1,177 @@
-<p>timesheet works!</p>
+<div class="home">
+    <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
+          <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a href = "/home"class="nav-links">Business Overview</a> </li>
+          <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
+          <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a class="nav-links"> Payroll </a> </li>
+          <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+          <button class= 'nav-list' (click)="onLogout()"> Logout </button>
+    </div>
+    <div class='canvas-container'>
+      <div class= 'canvas scroller'>
+              <div class='welcome-container'  [ngStyle]="{width:'90%'}" *ngIf="userDetails">
+              <Button  *ngFor="let item of menuItems; let i = index" class='toggle-btn' (click)="toggleDiv(); menuClick(i)">
+                  <fa-icon  *ngIf="item.state" class='menu-toggle'  [icon]="faBars" size ='lg'></fa-icon>
+                  <fa-icon  *ngIf="!item.state" class='menu-toggle'  [icon]="faTimes" size ='lg'></fa-icon>
+              </Button>
+              <h3 class='user-welcome-start'>Welcome&nbsp;</h3><h3 class="user-welcome-banner"> {{userDetails.fullName}}
+                
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                      <img class="user-pic" [src]= "userDetails.userPic" alt="profile picture" style ="width:60px; height:60px;"/>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item"href="/settings">Settings</a>
+                      <a class="dropdown-item" id="logout"(click)="onLogout()">Logout</a>
+                    </div>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                      <fa-icon class='notification-btn'  [icon]="faExclamation" size ='2x'></fa-icon>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <div class="dropdown-item"href="/settings">New Message Notification</div>
+                      
+                    </div>
+                  </div>
+              </h3>
+            </div>
+            <div class= 'dash-container'>
+              <div class= 'overview-header'>
+                <h2> Time-Sheet </h2>
+              </div>
+              <div class ='user-pay-table-container'>
+                  <div class='pay-table'>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Time Worked</th>
+                                <th>Pay Per Hour</th>
+                                <th>Payment</th>
+                                <th class= 'confirm-pay-head'>Confirm Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let users of allUsers; let time of timelist; let pay of paylist ">
+                                <td>{{users.myUserId}}</td>
+                                <td>{{users.fullName}}</td>
+                                <td>{{time.timeWorked}} hr(s)</td>
+                                <td ><fa-icon class="pay-dolsign"  [icon]="faDollarSign" size ='lg'></fa-icon>{{pay.payperHour}}/Hr</td>
+                                <td><fa-icon class="pay-dolsign"  [icon]="faDollarSign" size ='lg'></fa-icon>{{pay.payment}}</td>
+                                <button type="button" class= "btn btn-light mr-2 pay-btn" 
+                                   
+                                >
+                                <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon>
+                                </button>
+                            </tr>
+                        </tbody>
+                    </table>
+                          
+                      
+                </div>
+              </div>
+                 
+            </div>
+      </div>
+    </div>
+    
+
+    <div class= "news-feed"[class.visited] = "isVisited == true" >
+      <div class='toggle-col'>
+        <button (click) = "checkVisited()" *ngFor="let item of feedItems; let i = index" class='feed-toggle' (click)='feedClick(i)'  >
+          <fa-icon  *ngIf="item.state" class='feed-toggle'  [icon]="faCaretLeft" size ='3x'></fa-icon>
+          <fa-icon  *ngIf="!item.state" class='feed-toggle'  [icon]="faCaretRight" size ='3x'></fa-icon>
+        </button>
+      </div>
+      <div class='news-feed-content' >
+        <div class= 'addFeed' data-bs-toggle="modal" data-bs-target="#exampleModal2">
+          <fa-icon class="add-post" [icon]="faPlus" size ='2x'></fa-icon>
+      </div>
+        <h3 class="feed-heading">COMPANY FEED</h3>
+        <div class='news-feed-container'>
+          <div class="post-feed-list" *ngFor="let post of allFeed">
+          <div class='post-container'>
+            <div class='user-post-name'>
+              <div class="UserPostTop">{{post.fullName}} <img class="feed-user-pic" [src]= "post.postUserPic" alt="profile picture" style ="width:70px; height:70px;"/></div>
+              <div class="post-subject">{{post.postSubject}}</div>
+            </div>
+            <div class='post-content'>
+              {{post.postMessage}}
+            </div>
+            <div class='user-post-time'>
+              {{post.postTime}}
+            </div>
+            <div class="accordion-item" >
+              <div *ngFor="let item of allReplies;"    id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="reply-container" *ngIf="item.parentcommentid===post.cfId">
+                  <h4 class="reply-fullname"><img class="feed-user-pic" [src]= "item.postreplyUserPic" alt="profile picture" style ="width:30px; height:30px;"/>{{item.fullName}}:</h4> &nbsp;&nbsp;<h5 class= "reply-content">{{item.commenttext}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed"  data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Replies
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <form  (submit)="onPostReply(post.cfId)" id= {{post.cfId}} class="accordion-body">
+                  <textarea [(ngModel)]="commenttext" name= "commenttext"  rows="3">
+                  </textarea>
+                  <button  class="reply-btn" type="submit" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Reply
+                </button>
+              </form>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModal2Label">Add A New Post </h5>
+              <app-question></app-question>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form  autoComplete='off' (submit)="onSubmit()" class="addUser-form">     
+              <div class='form-input-container'>
+                  <div class="form-group" required>
+                      <label > Please enter a subject: </label>
+                      <input [(ngModel)]="postSubject"name ="postSubject"class="form-control"   type ="text" id="my-input"/>
+                  </div>
+                  <div class="form-group" required>
+                    <label> Please enter your message: </label>
+                    <input [(ngModel)]="postMessage" name= "postMessage" class="form-control"   type ="text-area" id="my-input"/>
+                </div>
+                  <div class="form-group" required>
+                      <label> Please enter an Image: </label>
+                      <input [(ngModel)]="postImage" name= "postImage" class="form-control"   type ="file" id="my-input"/>
+                  </div>
+                  
+                  <input type="checkbox" required />
+                  <div class="form-row">
+                      <div class= "form-group">
+                          <button type="submit"  data-bs-dismiss="modal" class='btn-outline-primary'> Add User </button>
+                      </div>
+                  </div>
+              </div>
+              
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+    
+  </div>

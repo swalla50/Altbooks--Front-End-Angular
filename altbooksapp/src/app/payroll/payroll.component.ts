@@ -14,6 +14,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Chart, registerables} from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -84,6 +85,7 @@ export class PayrollComponent implements OnInit {
   faCaretRight = faCaretRight;
   faPlus = faPlus;
   faCreditCard = faCreditCard;
+  faExclamation = faExclamation;
   
 
   public isVisited = false;

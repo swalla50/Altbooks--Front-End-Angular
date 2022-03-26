@@ -8,12 +8,20 @@ import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SettingsComponent } from './settings/settings.component';
 import { PayrollComponent } from './payroll/payroll.component';
+import { TimesheetComponent } from './timesheet/timesheet.component';
+import { SevendaychartComponent } from './Components/sevendaychart/sevendaychart.component';
+import { MonthchartComponent } from './Components/monthchart/monthchart.component';
+import { YearchartComponent } from './Components/yearchart/yearchart.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/user/login', pathMatch: 'full'},
   {path:'home', component:HomeComponent, canActivate:[AuthGuard]},
   {path: 'settings', component: SettingsComponent},
   {path: 'payroll', component: PayrollComponent},
+  {path: 'timesheet', component: TimesheetComponent},
+  {path: 'sevendaychart', component: SevendaychartComponent},
+  {path: 'monthdaychart', component: MonthchartComponent},
+  {path: 'yearchart', component: YearchartComponent},
   {
     path: 'user',component:UserComponent,
     children: [
