@@ -1,11 +1,12 @@
 <div class="home">
-    <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
-          <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a class="nav-links" href="home">Business Overview</a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a class="nav-links"> Payroll </a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
-          <button class= 'nav-list' (click)="onLogout()"> Logout </button>
-    </div>
+  <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
+    <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a href="home" class="nav-links">Business Overview</a> </li>
+    <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
+    <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a href = "payroll" class="nav-links"> Payroll </a> </li>
+    <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+    <li class= 'nav-list'>  <fa-icon [icon]="faBusinessTime" size ='lg'></fa-icon> <a href="timesheet"class="nav-links">Time Sheet</a></li>
+    <button class= 'nav-list' (click)="onLogout()"> Logout </button>
+  </div>
     <div class='canvas-container'>
         <div class= 'canvas scroller'>
               <div class='welcome-container'  [ngStyle]="{width:'90%'}" *ngIf="userDetails">
@@ -200,7 +201,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title text-danger" id="exampleModal2Label">Edit A User</h5>
+            <h5 class="modal-title text-danger" id="exampleModal2Label">Edit your profile</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           
@@ -229,7 +230,7 @@
                   
                   <div class="form-group" required>
                     <label > Please upload your profile picture: </label>
-                    <input [(ngModel)]="userPic" name="userPic"class="form-control" (change)="oneditSubmit(file.files)"  #file style="display:none" placeholder="Choose file"  type ="file" id="my-input"/>
+                    <input [(ngModel)]="userPic" value="file.name" name="userPic"class="form-control" (change)="oneditSubmit(file.files)" val #file style="display:none" placeholder="Choose file"  type ="file" id="my-input"/>
                     <button type = "button" class="btn btn-success" (click)="file.click()">Upload</button>
                     <span class="upload" *ngIf="progress > 0">
                       {{progress}}%

@@ -15,7 +15,11 @@ import { Chart, registerables} from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
-
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserClock } from '@fortawesome/free-solid-svg-icons';
 
 
 import { trigger, transition, animate, style} from '@angular/animations';
@@ -23,7 +27,6 @@ import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
 import { FinDataService } from '../fin-data.service';
 import 'chartjs-adapter-moment';
-
 
 
 export interface CollapsibleItem { 
@@ -61,7 +64,11 @@ export class TimesheetComponent implements OnInit {
   faPlus = faPlus;
   faCreditCard = faCreditCard;
   faExclamation = faExclamation;
-  
+  faClock = faClock;
+  faPencilAlt = faPencilAlt;
+  faPlusCircle = faPlusCircle;
+  faCheckCircle = faCheckCircle;
+  faUserClock =faUserClock;
 
   public isVisited = false;
 
@@ -81,6 +88,7 @@ export class TimesheetComponent implements OnInit {
   makePost: any
   userFeed: any;
   userreplyFeed: any;
+  userTimeAdd :any;
   toggleDiv() {
     this.showDiv = this.showDiv? false : true;
   }
@@ -96,6 +104,23 @@ export class TimesheetComponent implements OnInit {
 
   constructor(public service:UserService, private router:Router, private _finData: FinDataService, public allservice:SharedService, private toastr: ToastrService) { 
     Chart.register(...registerables)
+  }
+  isEditing: boolean = false;
+  enableEditIndex = null;
+  i: any;
+  switchEditMode(i: any) {
+    this.isEditing = true;
+    this.enableEditIndex = i;
+  }
+
+  save() {
+    this.isEditing = false;
+    this.enableEditIndex = null;
+  }
+
+  cancel() {
+    this.isEditing = false;
+    this.enableEditIndex = null;
   }
   public createImgPath =(serverPath: string) => {
     return`http://localhost:5000/${serverPath}`;
@@ -170,6 +195,31 @@ export class TimesheetComponent implements OnInit {
       commenttext: string | undefined;
       parentcommentid!: number;
       postreplyUserPic: string | undefined;
+      fullName: string | undefined;
+      timeworkedIn: string | undefined ;
+      timeworkedOut: string | undefined;
+      payperHour: number | undefined;
+      myUserId: number | undefined;
+      sheetId: number | undefined;
+
+      //Date format for display
+      formatsDateTest: string[] = [
+        'dd/MM/yyyy',
+        'dd/MM/yyyy hh:mm:ss',
+        'dd-MM-yyyy',
+        'dd-MM-yyyy HH:mm:ss',
+        'MM/dd/yyyy',
+        'MM/dd/yyyy hh:mm:ss',
+        'yyyy/MM/dd',
+        'yyyy/MM/dd HH:mm:ss',
+        'dd/MM/yy',
+        'dd/MM/yy hh:mm:ss',
+        ];
+    
+      dateNow : Date = new Date();
+      dateNowISO = this.dateNow.toISOString();
+      dateNowMilliseconds = this.dateNow.getTime();
+
       
 
       onPostReply(value: any){
@@ -197,11 +247,102 @@ export class TimesheetComponent implements OnInit {
         });
       })
       }
+      
+      
+      onaddTime(){
+        this.service.getUserProfile().subscribe(loggeduser=>{
+          this.user = loggeduser;
+          var date;
+
+          var timeval = {
+            fullName:this.fullName = this.user.fullName,
+            timeworkedIn: this.timeworkedIn = new Date().toISOString().slice(0, 19),
+            timeworkedOut: this.timeworkedOut,
+            payperHour: this.payperHour = this.user.payperHour,
+            myUserId: this.myUserId = this.user.myUserId
+
+          } 
+          this.allservice.postTimeSheet(timeval).subscribe(newdataTime =>{
+            this.userTimeAdd=newdataTime;
+
+            console.log("this is the value1:", timeval)
+
+            console.log("Time added:", this.userTimeAdd)
+            return this.userTimeAdd
+          });
+          console.log("this is the value2:",timeval)
+
+          this.toastr.success("Added Time!")  
+      
+      })
+      }
+      
+
+      onquickupdate(value: any){
+        
+        var timeval = {
+          sheetId: this.sheetId = value,
+          timeworkedOut: this.timeworkedOut = this.dateNowISO.substring(0, this.dateNowISO.length - 5),
+        } 
+        this.allservice.quickupdateOut(timeval).subscribe(newdataTime =>{
+          this.userTimeAdd=newdataTime;
+
+          if(this.userTimeAdd.succeeded)
+          {
+            this.toastr.success("Added Time!") 
+          }
+          
+          
+
+          console.log("Time added:", timeval)
+          return this.userTimeAdd
+        });
+        console.log(timeval)
+      }
+      onupdateTime(value: any,inval: any,outval: any){
+        this.service.getUserProfile().subscribe(loggeduser=>{
+          this.user = loggeduser;
+          var date;
+          date = new Date();
+          date = date.getUTCFullYear() + '-' +
+              ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
+              ('00' + date.getUTCDate()).slice(-2) + 'T' + 
+              ('00' + date.getUTCHours()).slice(-2) + ':' + 
+              ('00' + date.getUTCMinutes()).slice(-2) + ':' + 
+              ('00' + date.getUTCSeconds()).slice(-2);
+          
+          var timeval = {
+            sheetId: this.sheetId = value,
+            timeworkedIn: this.timeworkedIn = inval,
+            timeworkedOut: this.timeworkedOut = outval,
+          } 
+          this.allservice.updateTimeSheet(timeval).subscribe(newdataTime =>{
+            this.userTimeAdd=newdataTime;
+
+            if(this.userTimeAdd.succeeded)
+            {
+              this.toastr.success("Added Time!") 
+            }
+            else
+              this.toastr.error("Could not add time.") 
+            
+            console.log("this is the value1:", timeval)
+
+            console.log("Time added:", timeval)
+            return this.userTimeAdd
+          });
+          console.log("this is the value2:",timeval)
+
+           
+      
+      })
+    }
+
       userPic:any ;
+      matchingid: any
   ngOnInit(): void {
     this.allservice.getCPFeed().subscribe(feeddata=>{
       this.allFeed = feeddata;
-
       
       console.log("Company Feed: ", this.allFeed)
 
@@ -224,26 +365,7 @@ export class TimesheetComponent implements OnInit {
       this.allUsers = data;
       let alluserid = data.map(data => data.myUserId)
 
-      this.allservice.getTimeSheet().subscribe(payrolldata =>{
-        this.timelist = payrolldata;
-        let timeTimeworked = payrolldata.map(payrolldata => payrolldata.timeWorked)
-        console.log("timelist:", this.timelist)
-        let timeuserid = payrolldata.map(payrolldata => payrolldata.myUserId)
-
-          
-          payrolldata.forEach(element =>{
-            console.log(element.myUserId)
-          })
-          for (var i = 0; i < this.timelist.length; i++){
-            for(var j = 0; j < this.paylist.length; j++){
-              
-              this.paylist.timeWorked = this.timelist.timeWorked
-              console.log("found mathcing id:", timeuserid)
-              console.log("paylist",this.paylist)
-            }
-          }
-        
-      })
+      
       console.log("all users: ", this.allUsers) 
      });
 
@@ -253,6 +375,26 @@ export class TimesheetComponent implements OnInit {
       this.userDetails.userPic = this.service.PhotoURL+'/'+this.userDetails.userPic
       
       console.log("user pic: ",this.userDetails.userPic)
+
+      this.allservice.getTimeSheet().subscribe(payrolldata =>{
+        this.timelist = payrolldata;
+        let timeTimeworked = payrolldata.map(payrolldata => payrolldata.timeWorked)
+        console.log("timelist:", this.timelist)
+        let timeuserid = payrolldata.map(payrolldata => payrolldata.myUserId)
+
+         
+          payrolldata.forEach(element =>{
+            if (element.myUserId == this.userDetails.myUserId){
+              console.log("mathing id", element.myUserId)
+               this.matchingid= element
+            }
+
+            console.log("matching element:",this.matchingid)
+            return element
+          })
+          
+        
+      })
 
   
       const user = this.userDetails.orgName;

@@ -615,3 +615,73 @@ fa-icon.ng-fa-icon.notification-btn{
 .dash-container {
     padding-inline: 5%;
 }
+button.btn.btn-light.mr-2.pay-btn {
+    border-radius: 10px;
+}
+td.action-payment {
+    background: linear-gradient(0deg, rgba(49,48,48,1) 51%, rgba(96,94,94,1) 100%);
+
+}
+
+input.ng-pristine.ng-valid.ng-touched {
+    text-align: center;
+    border-radius: 5px;
+    border: solid #a3a3a3 1px;
+}
+input.ng-pristine.ng-valid {
+    text-align: center;
+    border-radius: 5px;
+    border: solid #a3a3a3 1px;
+}
+
+.overview-header {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
+.add-time-btn {
+    float: right;
+    background: #333333;
+    margin-bottom: 20px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
+    height: 50px;
+    width: 50px;
+    border-radius: 20px;
+    border: none;
+}
+
+
+svg.svg-inline--fa.fa-plus.fa-w-14.fa-lg {
+    transform: translateY(10px);
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: rgb(233 232 232);
+    color: #007bff;
+}
+
+button.btn.btn-light.mr-2.pay-btn {
+    background: #333333;
+    color:white;
+    border:none;
+    box-shadow: rgb(0 0 0 / 21%) 0px 25px 15px 0px;
+}
+button.btn.btn-light.mr-2.pay-btn:hover {
+    transform:translateY(6px);
+    -webkit-transition: all 1s ease;
+    transition: all 400ms ease-in-out;
+}
+
+input.form-control.ng-untouched.ng-pristine.ng-valid {
+
+    height: 25px;
+
+}
+
+input.form-control.ng-pristine.ng-valid.ng-touched{
+    height: 25px;
+}
+
+table.table.table-striped {
+    box-shadow: rgb(0 0 0 / 21%) 0px 25px 15px 0px;
+}

@@ -220,6 +220,7 @@ export class HomeComponent implements OnInit {
             let r = data.map(data => data.parentcommentid)
            
           })
+          this.refreshreplies();
         });
       })
       }

@@ -67,4 +67,14 @@ postCPFeed(val: any):Observable<any[]>{
     return this.http.post<any>(this.APIUrl+ 'AddComment/addCommentitem', val)
   }
   
+  postTimeSheet(val: any):Observable<any[]>{
+    return this.http.post<any>(this.APIUrl+ 'AddTimeSheet/addTimeitem', val)
+  }
+  updateTimeSheet(val: any):Observable<any[]>{
+    return this.http.put<any>(this.APIUrl+'AddTimeSheet/updateTime', val)
+  }
+  quickupdateOut(val: any):Observable<any[]>{
+    return this.http.put<any>('http://localhost:5000/api/QuickAddTime/quickupdateTime', val)
+  }
+  
 }

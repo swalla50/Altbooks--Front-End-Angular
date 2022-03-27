@@ -37,8 +37,9 @@
             </div>
             <div class= 'dash-container'>
               <div class= 'overview-header'>
-                <h2> Time-Sheet </h2>
+                <h2> Time-Sheet </h2> 
               </div>
+              <button (click) = "onaddTime()"class= "add-time-btn" ><fa-icon  class='add-time-icon'[icon]="faPlus" size ='2x'></fa-icon></button>
               <div class ='user-pay-table-container'>
                   <div class='pay-table'>
                     <table class="table table-striped">
@@ -46,24 +47,37 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Time Worked</th>
-                                <th>Pay Per Hour</th>
-                                <th>Payment</th>
-                                <th class= 'confirm-pay-head'>Confirm Payment</th>
+                                <th>Time-In</th>
+                                <th>Time-Out</th>
+                                <th>Hours</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr *ngFor="let users of allUsers; let time of timelist; let pay of paylist ">
+                        <tbody *ngFor="let users of allUsers; let time of timelist; index as i">
+                            <tr *ngIf=" users.myUserId==userDetails.myUserId">
+                                <ng-container *ngIf="enableEditIndex != i">
                                 <td>{{users.myUserId}}</td>
                                 <td>{{users.fullName}}</td>
-                                <td>{{time.timeWorked}} hr(s)</td>
-                                <td ><fa-icon class="pay-dolsign"  [icon]="faDollarSign" size ='lg'></fa-icon>{{pay.payperHour}}/Hr</td>
-                                <td><fa-icon class="pay-dolsign"  [icon]="faDollarSign" size ='lg'></fa-icon>{{pay.payment}}</td>
-                                <button type="button" class= "btn btn-light mr-2 pay-btn" 
-                                   
-                                >
-                                <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon>
-                                </button>
+                                <td><fa-icon class="pay-dolsign"  [icon]="faClock" size ='lg'></fa-icon>{{time.timeworkedIn | date:'EEE dd/MM hh:mm a'}}</td>
+                                <td ><fa-icon class="pay-dolsign"  [icon]="faClock" size ='lg'></fa-icon>{{time.timeworkedOut | date:'EEE dd/MM hh:mm a'}}</td>
+                                <td><fa-icon class="pay-dolsign"  [icon]="faClock" size ='lg'></fa-icon>{{time.timeWorked}} Hr(s)</td>
+                                <td class ="action-payment" *ngIf="enableEditIndex != i">
+                                    <button  class= "btn btn-light mr-2 pay-btn"type="button" (click)="switchEditMode(i)">
+                                        <fa-icon  [icon]="faPencilAlt" size ='lg'></fa-icon>
+                                    </button>
+                                    <button  id= "time.sheetId" class= "btn btn-light mr-2 pay-btn" (click)="onquickupdate(time.sheetId)"><fa-icon  [icon]="faUserClock" size ='lg'></fa-icon> Clock-Out</button>
+                                </td>
+                            </ng-container>
+                            <ng-container *ngIf="enableEditIndex == i">
+                                <td><input readonly [(ngModel)]="users.myUserId" /></td>
+                                <td><input readonly [(ngModel)]="users.fullName" /></td>
+                                <td id= {{time.sheetId}}><input #timeworkedIn class="form-control" name= "{{time.timeworkedIn}}"placeholder="dd-MM-dd HH:mm:ss" size="16"  type="datetime-local" [(ngModel)]="time.timeworkedIn" /></td>
+                                <td id= {{time.sheetId}}><input #timeworkedOut class="form-control" name= "{{time.timeworkedOut}}" placeholder="dd-MM-dd HH:mm:ss" size="16" type="datetime-local" [(ngModel)]="time.timeworkedOut" /></td>
+                                <td><input readonly [(ngModel)]="time.timeWorked" /></td>
+                                <td>
+                                    <button  id= "time.sheetId" class= "btn btn-light mr-2 pay-btn" (click)="onupdateTime(time.sheetId,timeworkedIn.value,timeworkedOut.value)"><fa-icon  [icon]="faCheckCircle" size ='lg'></fa-icon> Update</button>
+                                </td>
+                            </ng-container>
                             </tr>
                         </tbody>
                     </table>

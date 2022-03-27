@@ -20,6 +20,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { SharedService } from '../shared.service';
+import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -72,6 +73,7 @@ export class SettingsComponent implements OnInit {
   faCaretLeft = faCaretLeft;
   faPlus = faPlus;
   faExclamation = faExclamation;
+  faBusinessTime = faBusinessTime;
 
   public isVisited = false;
 
@@ -123,7 +125,7 @@ export class SettingsComponent implements OnInit {
     this.service.getUserProfile().subscribe(data=>{
       this.userDetails = data
       this.userDetails.userPic = this.service.PhotoURL+'/' + this.userDetails.userPic
-      console.log("my user pic",this.userDetails.userPic)
+      
       
       //Logs the returned Filtered data matching the specifc userID in the Database
       console.log("Logged in user information: ", this.userDetails);
@@ -135,9 +137,7 @@ export class SettingsComponent implements OnInit {
         console.log("ourfeed id: ",Feeddataid)
         
         let r = data.map(data => data.parentcommentid)
-        console.log("feed parents", this.allReplies)
-        console.log("feedId:", r)
-        console.log("All of the replies", this.allReplies)
+        
       })
     
   })
@@ -261,10 +261,14 @@ public oneditSubmit = ( files:any) =>
       this.userData.myUserId=this.edituserData.myUserId
       if(this.userData.succeeded){
         this.service.formModel.reset();
-        this.toastr.success('New user created!', 'Registration sucessful.')
+        this.toastr.success('Edited your profile!', 'Edit sucessful.')
+      }
+      else{
+        this.toastr.error("Failed to edit your profile.", "couldn't edit your profile")
       }
     }
   )
+  console.log(editbody)
       }
     })
     
@@ -275,7 +279,6 @@ onpostSubmit(){
   this.service.getUserProfile().subscribe(loggeduser=>{
     this.user = loggeduser;
     this.user.userPic
-    console.log("post User pic", this.user.userPic)
 
     var val = {
       postMessage:this.postMessage,
@@ -288,7 +291,6 @@ onpostSubmit(){
     } 
     this.allservice.postCPFeed(val).subscribe(postcpdata =>{
       this.userFeed=postcpdata;
-      console.log("User feed with image:",this.userFeed.postUserPic)
       return this.userFeed
       
     });

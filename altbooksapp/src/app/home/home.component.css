@@ -80,7 +80,7 @@ fa-icon.ng-fa-icon {
     display: flex;
     flex-direction: column;
     width: 15vw; 
-    background:#313030;
+    background: linear-gradient(0deg, rgba(49,48,48,1) 51%, rgba(96,94,94,1) 100%);
     padding-top: 10%;
     place-content: center;
 }
@@ -596,4 +596,11 @@ a#logout {
 }
 fa-icon.ng-fa-icon.notification-btn.ng-tns-c64-0 {
     color: white;
+}
+
+textarea.reply-btn.ng-tns-c64-0.ng-valid.ng-touched.ng-dirty {
+    height: 100px;
+}
+textarea.reply-btn.ng-tns-c64-0.ng-untouched.ng-pristine.ng-valid{
+    height: 100px;
 }
