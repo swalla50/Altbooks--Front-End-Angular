@@ -30,6 +30,7 @@ export class UserService {
     UserRole : ['',Validators.required],
     userPic : ['',Validators.required],
     MyUserId: ['', Validators.required],
+    payperHour: ['', Validators.required]
     
 
   });
@@ -47,7 +48,8 @@ export class UserService {
       orgName: this.formModel.value.orgName,
       orgType: this.formModel.value.orgType,
       UserRole: this.formModel.value.UserRole,
-      userPic: this.formModel.value.userPic = "anonymous.png"
+      userPic: this.formModel.value.userPic = "anonymous.png",
+      payPerHour: this.formModel.value.payperHour
     };
     return this.http.post(this.BaseURI+'/ApplicationUser/Register', body);
   }

@@ -80,7 +80,7 @@ fa-icon.ng-fa-icon {
     display: flex;
     flex-direction: column;
     width: 15vw; 
-    background: linear-gradient(0deg, rgba(49,48,48,1) 51%, rgba(96,94,94,1) 100%);
+    background:#313030;
     padding-top: 10%;
     place-content: center;
 }
@@ -129,38 +129,38 @@ img.user-pic.ng-tns-c23-0:hover{
     cursor: pointer;
 }
 
-.row1-analytics.ng-tns-c64-0 {
+.row1-analytics.ng-tns-c23-0 {
     padding-inline: 20px;
 }
 
-.sales.ng-tns-c64-0 {
-    height: fit-content;
+.sales.ng-tns-c57-0 {
+    height: 300px;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 30px;
     background: white;
     margin-top: 20px;
 }
 
-.left-feed.scroller.ng-tns-c64-0 {
+.left-feed.scroller.ng-tns-c57-0 {
     height: 500px;
     background: white;
-    border-radius: 10px;
+    border-radius: 30px;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
     overflow-y: scroll;
 }
-.second-row.ng-tns-c64-0 {
+.second-row.ng-tns-c57-0 {
     padding-inline: 20px;
     margin-top: 20px;
     display: grid;
     margin-bottom: 20px;
 }
-.bank-feed-item.ng-tns-c64-0 {
+.bank-feed-item.ng-tns-c57-0 {
     height: 50px;
     list-style: none;
     font-size: 18px;
 }
-.left-container.ng-tns-c64-0 {
+.left-container.ng-tns-c57-0 {
     grid-column: 1;
     padding-inline: 20px;
 }
@@ -209,7 +209,7 @@ h2.ng-tns-c23-0 {
     color: #1976d2;
 }
 
-.right-components.ng-tns-c64-0 {
+.right-component-container.ng-tns-c57-0 {
     height: 500px;
     border-radius: 30px;
 }
@@ -222,12 +222,12 @@ h3.Components.ng-tns-c23-0{
     border-bottom: solid gray;
 }
 
-.right-component-container.ng-tns-c64-0{
+.right-component-container.ng-tns-c57-0{
     grid-column: 2;
     height: 100%;
 }
 
-.right-components.ng-tns-c64-0{
+.right-components.ng-tns-c57-0{
     margin: 20px auto;
     width:400px;
     height:400px;
@@ -242,7 +242,7 @@ h3.Components.ng-tns-c23-0{
     background-color:#333;
     width: 50%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 30px;
     margin-right: 5px;
   }
 
@@ -250,7 +250,7 @@ h3.Components.ng-tns-c23-0{
     background-color:#333;
     width: 50%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 30px;
     margin-left: 5px;
   }
 
@@ -258,7 +258,7 @@ h3.Components.ng-tns-c23-0{
     background-color:#333;
     width: 50%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 30px;
     margin-right: 5px;
   }
 
@@ -266,18 +266,18 @@ h3.Components.ng-tns-c23-0{
     background-color:#333;
     width: 50%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 30px;
     margin-left: 5px;
   }
 
-  .row1-components.ng-tns-c64-0 {
+  .row1-components.ng-tns-c57-0 {
     height: 50%;
     width: 100%;
     display: inline-flex;
     padding: 10px;
 }
 
-.row2-components.ng-tns-c64-0{
+.row2-components.ng-tns-c57-0{
     height: 50%;
     width: 100%;
     display: inline-flex;
@@ -288,33 +288,29 @@ h3.Components.ng-tns-c23-0{
     transform: scale(1.02);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
-    cursor: pointer;
 }
 .Payroll-component:hover{
     transform: scale(1.02);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
-    cursor: pointer;
 }
 
 .other-component:hover{
     transform: scale(1.02);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
-    cursor: pointer;
 }
 
 .bookkeeping-component:hover{
     transform: scale(1.02);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
-    cursor: pointer;
 }
 
 svg.svg-inline--fa.fa-cogs.fa-w-20.fa-5x {
     vertical-align: -8rem;
 }
-button.nav-list.ng-tns-c64-0 {
+button.nav-list.ng-tns-c85-0{
     border-radius: 20px;
     background: #1976d2;
     border: solid 1px white;
@@ -322,7 +318,7 @@ button.nav-list.ng-tns-c64-0 {
     margin-left: 10px;
     color: white;
 }
-button.nav-list.ng-tns-c64-0:hover {
+button.nav-list.ng-tns-c57-0:hover {
     transform: scale(1.1);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
@@ -330,23 +326,179 @@ button.nav-list.ng-tns-c64-0:hover {
 svg.svg-inline--fa.fa-bars.fa-w-14.fa-lg {
     margin-bottom: 100%;
 }
-.ng-fa-icon.setting-icon.ng-tns-c64-0:hover{
+.ng-fa-icon.setting-icon.ng-tns-c57-0:hover{
     transform: scale(1.1);
     -webkit-transition: all .1s ease;
     transition: all 200ms ease-in-out;
 }
 
-.widget-card-header.ng-tns-c64-0 {
+.widget-card-header.ng-tns-c57-0 {
     color: white;
-    font-size: 20px;
   }
 
-a.settingsLink.ng-tns-c64-0 {
-    text-decoration: none;
+.addUser.ng-tns-c85-0 {
+    width: 300px;
+    height: 300px;
+    background: #1976d2;
+    border-radius: 40px;
+    margin: 30px;
+    box-shadow: rgb(0 0 0 / 30%) 0px 25px 15px 0px;
+}
+.addUser.ng-tns-c85-0:hover{
+    transform: scale(.9);
+    -webkit-transition: all .1s ease;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+    padding: 50px;
+}
+
+.changeMy.ng-tns-c85-0 {
+    width: 300px;
+    height: 300px;
+    background: #1976d2;
+    border-radius: 40px;
+    margin: 30px;
+    box-shadow: rgb(0 0 0 / 30%) 0px 25px 15px 0px;
+}
+.changeMy.ng-tns-c85-0:hover{
+    transform: scale(.9);
+    -webkit-transition: all .1s ease;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+    padding: 50px;
+}
+.manageCompany.ng-tns-c85-0 {
+    width: 300px;
+    height: 300px;
+    background: #1976d2;
+    border-radius: 40px;
+    margin: 30px;
+    box-shadow: rgb(0 0 0 / 30%) 0px 25px 15px 0px;
+}
+.manageCompany.ng-tns-c85-0:hover{
+    transform: scale(.9);
+    -webkit-transition: all .1s ease;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+    padding: 50px;
+}
+.row1-analytics.ng-tns-c85-0 {
+    display: inline-flex;
+    margin: 20px;
+}
+fa-icon.ng-fa-icon.add-user.ng-tns-c85-0 {
+    color: white;
+}
+
+fa-icon.ng-fa-icon.update-user-icon.ng-tns-c85-0{
+    color: white;
+}
+
+fa-icon.ng-fa-icon.update-company.ng-tns-c85-0{
+    color: white;
+}
+h3.setting-widget-heading.ng-tns-c85-0 {
+    color: white;
+    font-size: 20px;
+}
+
+form.addUser-form.ng-tns-c85-0.ng-invalid.ng-dirty.ng-touched {
+    overflow-y: scroll;
+    height: 500px;
+    padding: 1%;
+}
+
+.btn-outline-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    height: 40px;
+    border: solid 1px white;
+    border-radius: 20px;
+    width: 200px;
+    align-self: center;
+    margin-top: 10px;
+    
+}
+
+.btn-outline-primary:hover{
+  transform: scale(1.1);
+  -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    place-content: center;
+    margin-left: -5px;
+}
+
+.news-feed.ng-tns-c85-0 {
+    background: #333333;
+    transform: translateX(-30px);
+    margin-top: 10vh;
+    width: 500px;
+    margin-bottom: 10vh;
+    border-radius: 30px;
+    display: inline-flex;
+    -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+    box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
 }
 
 
-.news-feed.ng-tns-c64-0 {
+.news-feed.ng-tns-c85-0.visited {
+    background: #333333;
+    transform: translateX(-477px);
+    margin-top: 10vh;
+    width: 500px;
+    margin-bottom: 10vh;
+    border-radius: 30px;
+    display: inline-flex;
+    -webkit-transition: all .1s ease;
+    transition: all 200ms ease-in-out;
+    box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
+}
+.toggle-col.ng-tns-c85-0 {
+    align-self: center;
+    height: 100%;
+}
+
+button.feed-toggle.ng-tns-c85-0 {
+    background: transparent;
+    border: none;
+    height: 100%;
+}
+.news-feed-content.ng-tns-c85-0 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 5%;
+    flex-direction: column;
+    background: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    border-radius: 20px;
+}
+.news-feed-container.ng-tns-c85-0 {
+    height: 100%;
+}
+img.user-pic.ng-tns-c85-0 {
+    margin-left: 20px;
+    border: solid;
+    border-radius: 50px;
+}
+
+.upload{
+    font-weight: bold;
+    color:green;
+    margin-left: 15%;
+    line-height: 30px;
+}
+
+.news-feed.ng-tns-c85-0 {
     background: #333333;
     transform: translateX(-30px);
     margin-top: 10vh;
@@ -361,7 +513,7 @@ a.settingsLink.ng-tns-c64-0 {
 }
 
 
-.news-feed.ng-tns-c64-0.visited {
+.news-feed.ng-tns-c85-0.visited {
     background: #333333;
     transform: translateX(-477px);
     margin-top: 10vh;
@@ -375,17 +527,17 @@ a.settingsLink.ng-tns-c64-0 {
     transition: all 200ms ease-in-out;
     box-shadow: rgb(0 0 0 / 45%) 0px 25px 15px 0px;
 }
-.toggle-col.ng-tns-c64-0 {
+.toggle-col.ng-tns-c85-0 {
     align-self: center;
     height: 100%;
 }
 
-button.feed-toggle.ng-tns-c64-0 {
+button.feed-toggle.ng-tns-c85-0 {
     background: transparent;
     border: none;
     height: 100%;
 }
-.news-feed-content.ng-tns-c64-0 {
+.news-feed-content.ng-tns-c85-0 {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -396,19 +548,20 @@ button.feed-toggle.ng-tns-c64-0 {
     margin-bottom: 30px;
     margin-left: 5px;
     border-radius: 20px;
+    overflow: hidden;
 }
-.news-feed-container.ng-tns-c64-0 {
+.news-feed-container.ng-tns-c85-0 {
     height: 100%;
 }
 
-.post-container.ng-tns-c64-0 {
+.post-container.ng-tns-c85-0 {
     height: fit-content;
-    background: #8da4f5;
+    background: #344757;
     border-radius: 5px;
     box-shadow: rgb(0 0 0 / 45%) 0px 10px 15px 0px;
     margin-bottom: 10px;
 }
-.user-post-name.ng-tns-c64-0 {
+.user-post-name.ng-tns-c85-0 {
     text-align: left;
     padding: 15px;
     color: white;
@@ -418,7 +571,7 @@ button.feed-toggle.ng-tns-c64-0 {
     width: 100%;
 }
 
-.post-content.ng-tns-c64-0 {
+.post-content.ng-tns-c85-0 {
     color: black;
     background-color: white;
     margin-inline: 1%;
@@ -428,24 +581,24 @@ button.feed-toggle.ng-tns-c64-0 {
     border-radius: 10px;
     overflow-y: scroll;
 }
-.news-feed-container.ng-tns-c64-0 {
+.news-feed-container.ng-tns-c85-0 {
     overflow-y: scroll;
     padding-inline: 4%;
     padding: 15px;
 }
 
-.addFeed.ng-tns-c64-0:hover{
+.addFeed.ng-tns-c85-0:hover{
     transform: translateY(-10px);
     -webkit-transition: all 1s ease;
     transition: all 300ms ease-in-out;
     cursor: pointer;
 }
-h3.feed-heading.ng-tns-c64-0 {
+h3.feed-heading.ng-tns-c85-0 {
     font-family: 'Ubuntu';
     font-weight: 500;
 }
 
-app-question.ng-tns-c64-0 {
+app-questionadduser.ng-tns-c85-0 {
     margin-left: 10px;
     color: #1976d2;
 }
@@ -454,20 +607,20 @@ h5#exampleModal2Label {
     color: #1976d2;
 }
 
-.user-post-time.ng-tns-c64-0 {
+.user-post-time.ng-tns-c85-0 {
     color: white;
     font-family: 'Ubuntu';
     font-size: 11px;
     text-align: left;
     margin-left: 17px;
 }
-.modal-content.ng-tns-c64-0 {
+.modal-content.ng-tns-c85-0 {
     border-radius: 15px;
 }
-.form-row.ng-tns-c64-0{
+.form-row.ng-tns-c85-0{
     justify-content: center;
 }
-button.btn-outline-primary.ng-tns-c64-0{
+button.btn-outline-primary.ng-tns-c85-0{
     border-radius: 15px;
     background:#1976d2 ;
     border: none;
@@ -476,23 +629,23 @@ button.btn-outline-primary.ng-tns-c64-0{
     color: white;
     box-shadow: rgb(0 0 0 / 45%) 0px 15px 15px 0px;
 }
-button.btn-outline-primary.ng-tns-c64-0:hover{
+button.btn-outline-primary.ng-tns-c85-0:hover{
     transform: translateY(6px);
     -webkit-transition: all 1s ease;
     transition: all 300ms ease-in-out;
 }
 
-.form-group.ng-tns-c64-0 {
+.form-group.ng-tns-c85-0 {
     width: 100%;
 }
-button.btn.btn-warning.ng-tns-c64-0{
+button.btn.btn-warning.ng-tns-c85-0{
     background: red;
     color: white;
     border:none;
     border-radius: 50px;
 }
 
-.post-subject.ng-tns-c64-0 {
+.post-subject.ng-tns-c85-0 {
     margin-left: 22px;
     width: 60%;
     line-height: 30px;
@@ -502,18 +655,18 @@ button.btn.btn-warning.ng-tns-c64-0{
 }
 
 
-.accordion-item.ng-tns-c64-0 {
+.accordion-item.ng-tns-c85-0 {
     background: #333333;
     color: white;
     border:none;
 }
-.accordion-button.ng-tns-c64-0.collapsed {
+.accordion-button.ng-tns-c85-0.collapsed {
     height: 10px;
     background: transparent;
     color:white;
   }
 
-  .accordion-button.ng-tns-c64-0 {
+  .accordion-button.ng-tns-c85-0 {
     height: 10px;
     background-color: #333;
     border-radius: 20px;
@@ -524,15 +677,15 @@ button.btn.btn-warning.ng-tns-c64-0{
     box-shadow: none;
   }
 
-  .reply-container.ng-tns-c64-0.ng-star-inserted {
+  .reply-container.ng-tns-c85-0.ng-star-inserted {
     display: flex;
 }
 
-h4.reply-fullname.ng-tns-c64-0 {
+h4.reply-fullname.ng-tns-c85-0 {
     margin-left: 10px;
 }
 
-h5.reply-content.ng-tns-c64-0 {
+h5.reply-content.ng-tns-c85-0 {
     margin-left: 8px;
     height: 10px;
     margin-top: 5px;
@@ -541,26 +694,26 @@ canvas#canvas {
     padding: 2%;
 }
 
-img.user-pic.ng-tns-c64-0 {
+img.user-pic.ng-tns-c85-0 {
     margin-left: 20px;
-
+    border: solid;
     border-radius: 50px;
 }
-img.feed-user-pic.ng-tns-c64-0{
+img.feed-user-pic.ng-tns-c85-0{
     border: solid #333333;
     border-radius: 50px;
 }
 
-img.feed-user-pic.ng-tns-c64-0 {
+img.feed-user-pic.ng-tns-c85-0 {
     margin-right: 10px;
 }
 
-form.accordion-body.ng-tns-c64-0.ng-untouched.ng-pristine.ng-valid {
+form.accordion-body.ng-tns-c85-0.ng-untouched.ng-pristine.ng-valid {
     display: flex;
     flex-direction: column;
 }
 
-button.reply-btn.ng-tns-c64-0 {
+button.reply-btn.ng-tns-c85-0 {
     background: #8da4f5;
     border-radius: 20px;
     color: white;
@@ -568,39 +721,40 @@ button.reply-btn.ng-tns-c64-0 {
     margin-top: 5px;
 }
 
-button.reply-btn.ng-tns-c64-0:hover {
+button.reply-btn.ng-tns-c85-0:hover {
     transform: scale(1.1);
     -webkit-transition: all 1s ease;
     transition: all 300ms ease-in-out;
     
 }
-form.accordion-body.ng-tns-c64-0.ng-valid.ng-dirty.ng-touched {
+form.accordion-body.ng-tns-c85-0.ng-valid.ng-dirty.ng-touched {
     display: grid;
     flex-direction: column;
 }
-img.user-pic.ng-tns-c64-0{
+
+.news-feed-container.ng-tns-c85-0 {
+    overflow-y: scroll;
+    padding-inline: 4%;
+    padding: 15px;
+}
+img.user-pic.ng-tns-c85-0{
     transform: translate(-33px, -7px);
 }
 button#dropdownMenuButton {
     border-radius: 50px;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     margin-left:15px;
 }
-a#logout {
+a#logout-drp {
     cursor: pointer;
 }
+
 
 .dropdown-toggle::after {
     display:none !important;
 }
-fa-icon.ng-fa-icon.notification-btn.ng-tns-c64-0 {
+fa-icon.ng-fa-icon.notification-btn.ng-tns-c85-0 {
     color: white;
 }
 
-textarea.reply-btn.ng-tns-c64-0.ng-valid.ng-touched.ng-dirty {
-    height: 100px;
-}
-textarea.reply-btn.ng-tns-c64-0.ng-untouched.ng-pristine.ng-valid{
-    height: 100px;
-}

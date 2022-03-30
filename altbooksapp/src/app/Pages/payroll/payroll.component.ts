@@ -13,18 +13,19 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Chart, registerables} from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
-import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
 
 
 
 import { trigger, transition, animate, style} from '@angular/animations';
 import { Router } from '@angular/router';
-import { UserService } from '../shared/user.service';
-import { FinDataService } from '../fin-data.service';
+import { UserService } from 'src/app/shared/user.service';
+import { FinDataService } from 'src/app/fin-data.service';
 import 'chartjs-adapter-moment';
-import { NgForm } from '@angular/forms';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+
+
 
 export interface CollapsibleItem { 
   label: string; 
@@ -32,10 +33,11 @@ export interface CollapsibleItem {
   state: boolean;
 }
 
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-payroll',
+  templateUrl: './payroll.component.html',
+  styleUrls: ['./payroll.component.css'],
   animations: [
     trigger('flyInOut', [
       transition('void => *', [
@@ -59,16 +61,18 @@ export interface CollapsibleItem {
   ],
   styles: ['']
 })
-export class HomeComponent implements OnInit {
-  
+export class PayrollComponent implements OnInit {
+
+   
  
 
   chart = <any>[];
-  chart2 = <any>[];
 
   userDetails: any;
   allFeed: any;
   user: any;
+  timelist: any;
+  paylist: any;
 
   faBars = faBars;
   faTimes = faTimes;
@@ -78,11 +82,12 @@ export class HomeComponent implements OnInit {
   faReceipt = faReceipt;
   faDollarSign = faDollarSign;
   faCogs = faCogs;
-  faCaretLeft = faCaretLeft;
+  faCaretLeft =faCaretLeft;
   faCaretRight = faCaretRight;
   faPlus = faPlus;
-  faBusinessTime = faBusinessTime;
+  faCreditCard = faCreditCard;
   faExclamation = faExclamation;
+  faBusinessTime= faBusinessTime;
   
 
   public isVisited = false;
@@ -165,6 +170,7 @@ export class HomeComponent implements OnInit {
         this.service.getUserProfile().subscribe(loggeduser=>{
           this.user = loggeduser;
           this.user.userPic
+          console.log("post User pic", this.user.userPic)
 
           var val = {
             postMessage:this.postMessage,
@@ -177,7 +183,7 @@ export class HomeComponent implements OnInit {
           } 
           this.allservice.postCPFeed(val).subscribe(res =>{
             this.userFeed=res;
-
+            console.log("User feed with image:",this.userFeed.postUserPic)
             return this.userFeed
             
           });
@@ -197,6 +203,7 @@ export class HomeComponent implements OnInit {
         this.service.getUserProfile().subscribe(loggeduser=>{
           this.user = loggeduser;
           this.user.userPic
+          console.log("post User pic", this.user.userPic)
           this.allservice.getCPFeed().subscribe(feeddata=>{
             this.allFeed = feeddata;
             
@@ -209,43 +216,32 @@ export class HomeComponent implements OnInit {
           } 
           this.allservice.postCPReply(val).subscribe(res =>{
             this.userreplyFeed=res;
+            console.log("User feed with image:",this.userreplyFeed.postreplyUserPic)
             return this.userreplyFeed
             
           });
           this.toastr.success("Post Created !")  
-          this.allservice.getFeedReply().subscribe(data =>{
-            this.allReplies = data;
-    
-            
-            let r = data.map(data => data.parentcommentid)
-           
-          })
-          this.refreshreplies();
         });
       })
       }
       userPic:any ;
   ngOnInit(): void {
-      while(localStorage.justOnce === 'false')
-      {
-        localStorage.setItem ('justOnce','true')
-        window.location.reload()
-        console.log("whole loal:", localStorage)
-      }
-  
     this.allservice.getCPFeed().subscribe(feeddata=>{
       this.allFeed = feeddata;
 
       
-     
+      console.log("Company Feed: ", this.allFeed)
 
       this.allservice.getFeedReply().subscribe(data =>{
         this.allReplies = data;
         let Feeddataid = feeddata.map(feeddata => feeddata.cfId)
 
+        console.log("ourfeed id: ",Feeddataid)
         
         let r = data.map(data => data.parentcommentid)
-       
+        console.log("feed parents", this.allReplies)
+        console.log("feedId:", r)
+        console.log("All of the replies", this.allReplies)
       })
      });
     
@@ -253,6 +249,29 @@ export class HomeComponent implements OnInit {
     
     this.allservice.getAllUserNames().subscribe(data=>{
       this.allUsers = data;
+      let alluserid = data.map(data => data.myUserId)
+
+      this.allservice.getTimeSheet().subscribe(payrolldata =>{
+        this.timelist = payrolldata;
+        let timeTimeworked = payrolldata.map(payrolldata => payrolldata.timeWorked)
+        console.log("timelist:", this.timelist)
+        let timeuserid = payrolldata.map(payrolldata => payrolldata.myUserId)
+
+          
+          payrolldata.forEach(element =>{
+            console.log(element.myUserId)
+          })
+          for (var i = 0; i < this.timelist.length; i++){
+            for(var j = 0; j < this.paylist.length; j++){
+              
+              this.paylist.timeWorked = this.timelist.timeWorked
+              console.log("found mathcing id:", timeuserid)
+              console.log("paylist",this.paylist)
+            }
+          }
+        
+      })
+      console.log("all users: ", this.allUsers) 
      });
 
     this.service.getUserProfile().subscribe(data=>{
@@ -260,6 +279,7 @@ export class HomeComponent implements OnInit {
 
       this.userDetails.userPic = this.service.PhotoURL+'/'+this.userDetails.userPic
       
+      console.log("user pic: ",this.userDetails.userPic)
 
   
       const user = this.userDetails.orgName;
@@ -273,170 +293,21 @@ export class HomeComponent implements OnInit {
           
           // let newdate = new Date(alldates).toLocaleDateString('en-US', {hour12: false})
           
+          console.log("newdate: ", difference)
         
-          var ctx = <HTMLCanvasElement> document.getElementById("canvas");
+          const ctx = 'canvas';
           const maxDate = new Date();
           const minDate = maxDate.setDate(maxDate.getDate() - 7);
     
           
-          this.chart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: alldates,
-              datasets:[
-                
-                {
-                  data: sales,
-                  borderColor: '#1976d2',
-                  backgroundColor: '#1976d2cc',
-                  borderWidth:1,
-                  hoverBorderWidth: 3,
-                  label:'Gross Profit',
-                  barThickness: 50,
-                  borderRadius:30
-                },
-                {
-                  data: cost,
-                  borderColor: '#5c5c5c',
-                  backgroundColor: '#00000073',
-                  borderWidth:1,
-                  hoverBorderWidth: 3,
-                  label:'Total Costs',
-                  pointStyle: 'rectRot',
-                  barThickness: 50,
-                  borderRadius:30
-                },
-                {
-                  data: difference,
-                  borderColor: '#5c5c5c',
-                  backgroundColor: '#19d249a3',
-                  borderWidth:1,
-                  hoverBorderWidth: 3,
-                  label:'Profit',
-                  pointStyle: 'rectRot',
-                  barThickness: 50,
-                  borderRadius:30
-                },
-              ]
-            },
-            options: {
-              scales: {
-                x:{
-                  display: true,
-                  type: 'time',
-                  time:{
-                    unit: 'day'
-                    },
-                    min: minDate,
-                    max: Date.now()
-                    
-                    
-                },
-                
-                y: {
-                  display:true,
-                  max: 2000,
-                  min: 0,
-                  ticks: {
-                     
-                    stepSize: 500   // minimum will be 0, unless there is a lower value.
-
-                }
-                }
-              },
-              plugins: {
-                legend: {
-                    display: true,
-                    labels: {
-                        color: 'black'
-                    }
-                }
-            }    
-            }
-          })
-
-          // var sctx = <HTMLCanvasElement> document.getElementById("canvas2");    
           
-          // this.chart = new Chart(sctx, {
-          //   type: 'bar',
-          //   data: {
-          //     labels: alldates,
-          //     datasets:[
-                
-          //       {
-          //         data: sales,
-          //         borderColor: '#1976d2',
-          //         backgroundColor: '#1976d2cc',
-          //         borderWidth:1,
-          //         hoverBorderWidth: 3,
-          //         label:'Gross Profit',
-          //         barThickness: 50,
-          //         borderRadius:30
-          //       },
-          //       {
-          //         data: cost,
-          //         borderColor: '#5c5c5c',
-          //         backgroundColor: '#00000073',
-          //         borderWidth:1,
-          //         hoverBorderWidth: 3,
-          //         label:'Total Costs',
-          //         pointStyle: 'rectRot',
-          //         barThickness: 50,
-          //         borderRadius:30
-          //       },
-          //       {
-          //         data: difference,
-          //         borderColor: '#5c5c5c',
-          //         backgroundColor: '#19d249a3',
-          //         borderWidth:1,
-          //         hoverBorderWidth: 3,
-          //         label:'Profit',
-          //         pointStyle: 'rectRot',
-          //         barThickness: 50,
-          //         borderRadius:30
-          //       },
-          //     ]
-          //   },
-          //   options: {
-          //     scales: {
-          //       x:{
-          //         display: true,
-          //         type: 'time',
-          //         time:{
-          //           unit: 'day'
-          //           },
-          //           min: minDate,
-          //           max: Date.now()
-                    
-                    
-          //       },
-                
-          //       y: {
-          //         display:true,
-          //         max: 2000,
-          //         min: 0,
-          //         ticks: {
-                     
-          //           stepSize: 500   // minimum will be 0, unless there is a lower value.
-
-          //       }
-          //       }
-          //     },
-          //     plugins: {
-          //       legend: {
-          //           display: true,
-          //           labels: {
-          //               color: 'black'
-          //           }
-          //       }
-          //   }    
-          //   }
-          // })
 
           const userInfo = res.filter(res => res.orgName === user)
+            console.log("This is the financial data: ", userInfo);
         }
         
       )
+      console.log("Logged in user information: ", data); 
         })
       //Logs the returned Filtered data matching the specifc userID in the Database
     };
@@ -450,18 +321,7 @@ export class HomeComponent implements OnInit {
 
   onLogout(){
     localStorage.removeItem('token');
-    localStorage.setItem('justOnce', 'false');
     this.router.navigate(['/user/login']);
-    console.log("just once: ",localStorage.justOnce)
   }
 
-  refreshreplies(){
-    this.allservice.getFeedReply().subscribe(data =>{
-      this.allReplies = data;
-
-      
-      let r = data.map(data => data.parentcommentid)
-     
-    })
-  }
 }

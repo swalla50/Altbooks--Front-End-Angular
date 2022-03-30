@@ -15,16 +15,20 @@ import { Chart, registerables} from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
 import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faHandshake } from '@fortawesome/free-solid-svg-icons';
 
 
 
 import { trigger, transition, animate, style} from '@angular/animations';
 import { Router } from '@angular/router';
-import { UserService } from '../shared/user.service';
-import { FinDataService } from '../fin-data.service';
+import { UserService } from 'src/app/shared/user.service';
+import { FinDataService } from 'src/app/fin-data.service';
 import 'chartjs-adapter-moment';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpEventType } from '@angular/common/http';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+
 
 export interface CollapsibleItem { 
   label: string; 
@@ -59,6 +63,7 @@ export interface CollapsibleItem {
   ],
   styles: ['']
 })
+
 export class HomeComponent implements OnInit {
   
  
@@ -83,15 +88,53 @@ export class HomeComponent implements OnInit {
   faPlus = faPlus;
   faBusinessTime = faBusinessTime;
   faExclamation = faExclamation;
+  faUsers = faUsers;
+  faHandshake =faHandshake;
   
 
   public isVisited = false;
+  newuserDetails: any;
 
   public checkVisited() {
     // reverse the value of property
     this.isVisited = !this.isVisited;
  }
+ //Quick Links drag and drop
+ todo = [
+    {
+      "name" : 'Settings',
+      "link" : "settings",
+      "icon" : faCogs
+    },
+    {
+      "name" : 'Payroll',
+      "link" : "payroll",
+      "icon" : faPiggyBank
+    },
+    {
+      "name" : 'Vendors',
+      "link" : "settings",
+      "icon" : faHandshake
+    },
+    {
+      "name" : 'Employees',
+      "link" : "payroll",
+      "icon" : faUsers
+    }
+  ];
 
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
   
   showDiv: boolean = false;
   newfeedpost: any;
@@ -118,123 +161,16 @@ export class HomeComponent implements OnInit {
 
   constructor(public service:UserService, private router:Router, private _finData: FinDataService, public allservice:SharedService, private toastr: ToastrService) { 
     Chart.register(...registerables)
-  }
-  public createImgPath =(serverPath: string) => {
-    return`http://localhost:5000/${serverPath}`;
-  }
-  //Upload property
-  public uploadFinished = (event: { dbPath: ""; }) =>
-  {
-    this.response = event;
-  }
-  menuItems: CollapsibleItem[] = [
-    { label: 'First', text: 'Lorem Ipsum', state: true }
-   ];
-
-    menuClick(clickedItem: number) {
-        this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state  // flips the boolean value for the clicked item 
-        for (let item of this.menuItems) {  
-           if ( item !== this.menuItems[clickedItem] ) { 
-               item.state = false; 
-           }
-        }
-        // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
-     }   
-     feedItems: CollapsibleItem[] = [
-      { label: 'First', text: 'Lorem Ipsum', state: true }
-     ];
-  
-      feedClick(feedItem: number) {
-          this.feedItems[feedItem].state = !this.feedItems[feedItem].state  // flips the boolean value for the clicked item 
-          for (let item of this.feedItems) {  
-             if ( item !== this.feedItems[feedItem] ) { 
-                 item.state = false; 
-             }
-          }
-          // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
-       }
-       today = new Date();
-      dd = String(this.today.getDate()).padStart(2, '0');
-      mm = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        yyyy = this.today.getFullYear();
-
-       newtoday = this.mm + '/' + this.dd + '/' + this.yyyy;
-       
-       
-       onSubmit(){
-        this.service.getUserProfile().subscribe(loggeduser=>{
-          this.user = loggeduser;
-          this.user.userPic
-
-          var val = {
-            postMessage:this.postMessage,
-            postImage:this.postImage,
-            postSubject: this.postSubject,
-            FullName:this.FullName = this.user.fullName,
-            postTime: this.postTime = this.newtoday,
-            postUserPic: this.postUserPic = this.service.PhotoURL+'/'+this.user.userPic
-
-          } 
-          this.allservice.postCPFeed(val).subscribe(res =>{
-            this.userFeed=res;
-
-            return this.userFeed
-            
-          });
-          this.toastr.success("Post Created !")  
-        });
-      }
-
-      
-
-      @Input()
-      commenttext: string | undefined;
-      parentcommentid!: number;
-      postreplyUserPic: string | undefined;
-      
-
-      onPostReply(value: any){
-        this.service.getUserProfile().subscribe(loggeduser=>{
-          this.user = loggeduser;
-          this.user.userPic
-          this.allservice.getCPFeed().subscribe(feeddata=>{
-            this.allFeed = feeddata;
-            
-          var val = {
-            commenttext:this.commenttext,
-            parentcommentid:value,
-            FullName: this.FullName = this.user.fullName,
-            postreplyUserPic: this.postUserPic = this.service.PhotoURL+'/'+this.user.userPic
-
-          } 
-          this.allservice.postCPReply(val).subscribe(res =>{
-            this.userreplyFeed=res;
-            return this.userreplyFeed
-            
-          });
-          this.toastr.success("Post Created !")  
-          this.allservice.getFeedReply().subscribe(data =>{
-            this.allReplies = data;
+    this.getAllDocuments();
     
-            
-            let r = data.map(data => data.parentcommentid)
-           
-          })
-        });
-      })
-      }
-      userPic:any ;
-  ngOnInit(): void {
-      while(localStorage.justOnce === 'false')
-      {
-        localStorage.setItem ('justOnce','true')
-        window.location.reload()
-        console.log("whole loal:", localStorage)
-      }
+  }
+
+  loading = true
+  getAllDocuments(){
   
     this.allservice.getCPFeed().subscribe(feeddata=>{
       this.allFeed = feeddata;
-
+      this.loading = false;
       
      
 
@@ -437,6 +373,141 @@ export class HomeComponent implements OnInit {
         
       )
         })
+  }
+  public createImgPath =(serverPath: string) => {
+    return`http://localhost:5000/${serverPath}`;
+  }
+  //Upload property
+  public uploadFinished = (event: { dbPath: ""; }) =>
+  {
+    this.response = event;
+  }
+  menuItems: CollapsibleItem[] = [
+    { label: 'First', text: 'Lorem Ipsum', state: true }
+   ];
+
+    menuClick(clickedItem: number) {
+        this.menuItems[clickedItem].state = !this.menuItems[clickedItem].state  // flips the boolean value for the clicked item 
+        for (let item of this.menuItems) {  
+           if ( item !== this.menuItems[clickedItem] ) { 
+               item.state = false; 
+           }
+        }
+        // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
+     }   
+     feedItems: CollapsibleItem[] = [
+      { label: 'First', text: 'Lorem Ipsum', state: true }
+     ];
+  
+      feedClick(feedItem: number) {
+          this.feedItems[feedItem].state = !this.feedItems[feedItem].state  // flips the boolean value for the clicked item 
+          for (let item of this.feedItems) {  
+             if ( item !== this.feedItems[feedItem] ) { 
+                 item.state = false; 
+             }
+          }
+          // the for loop goes through the array and sets each item to false *if* its not the item that was clicked
+       }
+       today = new Date();
+      dd = String(this.today.getDate()).padStart(2, '0');
+      mm = String(this.today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        yyyy = this.today.getFullYear();
+
+       newtoday = this.mm + '/' + this.dd + '/' + this.yyyy;
+       
+       
+       onSubmit(){
+        this.service.getUserProfile().subscribe(loggeduser=>{
+          this.user = loggeduser;
+          this.user.userPic
+
+          var val = {
+            postMessage:this.postMessage,
+            postImage:this.postImage,
+            postSubject: this.postSubject,
+            FullName:this.FullName = this.user.fullName,
+            postTime: this.postTime = this.newtoday,
+            postUserPic: this.postUserPic = this.service.PhotoURL+'/'+this.user.userPic
+
+          } 
+          this.allservice.postCPFeed(val).subscribe(res =>{
+            this.userFeed=res;
+
+            return this.userFeed
+            
+          });
+          this.toastr.success("Post Created !")  
+        });
+      }
+      
+      isVisible: boolean = true;
+
+      hideAdmin(){
+        this.service.getUserProfile().subscribe(data=>{
+          this.newuserDetails= data;
+          const user = this.newuserDetails.userRole;
+          
+          if (user === "User")
+          {
+            this.isVisible = false;
+          }
+          if (user === "Admin")
+          {
+            this.isVisible = true;
+          }
+        });
+      }
+      
+
+      @Input()
+      commenttext: string | undefined;
+      parentcommentid!: number;
+      postreplyUserPic: string | undefined;
+      
+
+      onPostReply(value: any){
+        this.service.getUserProfile().subscribe(loggeduser=>{
+          this.user = loggeduser;
+          this.user.userPic
+          this.allservice.getCPFeed().subscribe(feeddata=>{
+            this.allFeed = feeddata;
+            
+          var val = {
+            commenttext:this.commenttext,
+            parentcommentid:value,
+            FullName: this.FullName = this.user.fullName,
+            postreplyUserPic: this.postUserPic = this.service.PhotoURL+'/'+this.user.userPic
+
+          } 
+          this.allservice.postCPReply(val).subscribe(res =>{
+            this.userreplyFeed=res;
+            return this.userreplyFeed
+            
+          });
+          this.toastr.success("Post Created !")  
+          this.allservice.getFeedReply().subscribe(data =>{
+            this.allReplies = data;
+    
+            
+            let r = data.map(data => data.parentcommentid)
+           
+          })
+          this.refreshreplies();
+        });
+      })
+      }
+      userPic:any ;
+  ngOnInit(): void {
+      while(localStorage.justOnce === 'false')
+      {
+        localStorage.setItem ('justOnce','true')
+        window.location.reload()
+        console.log("whole loal:", localStorage)
+      }
+
+      this.hideAdmin();
+  
+    
       //Logs the returned Filtered data matching the specifc userID in the Database
     };
     

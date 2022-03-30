@@ -3,7 +3,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faBars, faCode } from '@fortawesome/free-solid-svg-icons';
 import { trigger, transition, animate, style} from '@angular/animations';
 import { Router } from '@angular/router';
-import { UserService } from '../shared/user.service';
+import { UserService } from 'src/app/shared/user.service';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { faPiggyBank } from '@fortawesome/free-solid-svg-icons';
 import { faMoneyCheck } from '@fortawesome/free-solid-svg-icons';
@@ -19,7 +19,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { SharedService } from '../shared.service';
+import { SharedService } from 'src/app/shared.service';
 import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -251,27 +251,58 @@ public oneditSubmit = ( files:any) =>
       orgName: this.orgName,
       myUserId: this.myUserId = this.edituserData.myUserId,
       userPic: this.userPic = fileToUpload.name 
-    }  
+    } 
 
-  this.service.editUserProfile(editbody).subscribe
-    (res => {
-            
+  this.service.editUserProfile(editbody).subscribe(
+    (res:any) =>{
       this.userData =res;
-      console.log("edited data",this.userData.myUserId)
-      this.userData.myUserId=this.edituserData.myUserId
-      if(this.userData.succeeded){
-        this.service.formModel.reset();
-        this.toastr.success('Edited your profile!', 'Edit sucessful.')
-      }
-      else{
-        this.toastr.error("Failed to edit your profile.", "couldn't edit your profile")
-      }
+      this.toastr.success('Edited Successfully!');
+      this.router.navigate(['/settings']);
+    },
+    err =>{
+      if(err.status == 400)
+      this.toastr.error("Failed to edit your profile.", "couldn't edit your profile")
+      else
+      console.log(err);
     }
-  )
+  );
+  
   console.log(editbody)
       }
     })
     
+})
+}
+
+onPostReply(value: any){
+  this.service.getUserProfile().subscribe(loggeduser=>{
+    this.user = loggeduser;
+    this.user.userPic
+    this.allservice.getCPFeed().subscribe(feeddata=>{
+      this.allFeed = feeddata;
+      
+    var val = {
+      commenttext:this.commenttext,
+      parentcommentid:value,
+      FullName: this.FullName = this.user.fullName,
+      postreplyUserPic: this.postUserPic = this.service.PhotoURL+'/'+this.user.userPic
+
+    } 
+    this.allservice.postCPReply(val).subscribe(res =>{
+      this.userreplyFeed=res;
+      return this.userreplyFeed
+      
+    });
+    this.toastr.success("Post Created !")  
+    this.allservice.getFeedReply().subscribe(data =>{
+      this.allReplies = data;
+
+      
+      let r = data.map(data => data.parentcommentid)
+     
+    })
+    this.refreshreplies();
+  });
 })
 }
 

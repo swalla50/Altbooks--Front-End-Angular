@@ -1,9 +1,10 @@
 <div class="home">
+  <app-chat></app-chat>
   <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
     <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a href="home" class="nav-links">Business Overview</a> </li>
     <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
-    <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a href = "payroll" class="nav-links"> Payroll </a> </li>
-    <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+    <li *ngIf="isVisible" class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a href = "payroll" class="nav-links"> Payroll </a> </li>
+    <li *ngIf="isVisible" class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
     <li class= 'nav-list'>  <fa-icon [icon]="faBusinessTime" size ='lg'></fa-icon> <a href="timesheet"class="nav-links">Time Sheet</a></li>
     <button class= 'nav-list' (click)="onLogout()"> Logout </button>
   </div>
@@ -267,7 +268,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form  autoComplete='off' (submit)="onSubmit()" class="addUser-form">     
+            <form  autoComplete='off' (submit)="onpostSubmit()" class="addUser-form">     
               <div class='form-input-container'>
                   <div class="form-group" required>
                       <label > Please enter a subject: </label>

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "D:\React\Altbooks--Front-End-Angular\altbooksapp\src\app\home\home.component.css";
 h2{
     font-family: ubuntu;
 }

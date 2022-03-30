@@ -1,11 +1,13 @@
 <div class="home">
-    <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
-          <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a href = "/home"class="nav-links">Business Overview</a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a class="nav-links"> Payroll </a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
-          <button class= 'nav-list' (click)="onLogout()"> Logout </button>
-    </div>
+  <app-chat></app-chat>
+  <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
+    <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a href="home" class="nav-links">Business Overview</a> </li>
+    <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
+    <li *ngIf="isVisible" class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a href = "payroll" class="nav-links"> Payroll </a> </li>
+    <li *ngIf="isVisible" class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+    <li class= 'nav-list'>  <fa-icon [icon]="faBusinessTime" size ='lg'></fa-icon> <a href="timesheet"class="nav-links">Time Sheet</a></li>
+    <button class= 'nav-list' (click)="onLogout()"> Logout </button>
+  </div>
     <div class='canvas-container'>
       <div class= 'canvas scroller'>
               <div class='welcome-container'  [ngStyle]="{width:'90%'}" *ngIf="userDetails">
@@ -55,7 +57,7 @@
                         </thead>
                         <tbody *ngFor="let users of allUsers; let time of timelist; index as i">
                             <tr *ngIf=" users.myUserId==userDetails.myUserId">
-                                <ng-container *ngIf="enableEditIndex != i">
+                                <ng-container #timedata *ngIf="enableEditIndex != i">
                                 <td>{{users.myUserId}}</td>
                                 <td>{{users.fullName}}</td>
                                 <td><fa-icon class="pay-dolsign"  [icon]="faClock" size ='lg'></fa-icon>{{time.timeworkedIn | date:'EEE dd/MM hh:mm a'}}</td>
@@ -73,9 +75,10 @@
                                 <td><input readonly [(ngModel)]="users.fullName" /></td>
                                 <td id= {{time.sheetId}}><input #timeworkedIn class="form-control" name= "{{time.timeworkedIn}}"placeholder="dd-MM-dd HH:mm:ss" size="16"  type="datetime-local" [(ngModel)]="time.timeworkedIn" /></td>
                                 <td id= {{time.sheetId}}><input #timeworkedOut class="form-control" name= "{{time.timeworkedOut}}" placeholder="dd-MM-dd HH:mm:ss" size="16" type="datetime-local" [(ngModel)]="time.timeworkedOut" /></td>
-                                <td><input readonly [(ngModel)]="time.timeWorked" /></td>
+                                <td id= {{time.sheetId}}><input #timeWorked  class="form-control" name= "{{time.timeWorked}}"readonly [(ngModel)]="time.timeWorked" /></td>
                                 <td>
-                                    <button  id= "time.sheetId" class= "btn btn-light mr-2 pay-btn" (click)="onupdateTime(time.sheetId,timeworkedIn.value,timeworkedOut.value)"><fa-icon  [icon]="faCheckCircle" size ='lg'></fa-icon> Update</button>
+                                    <button  id= "time.sheetId" class= "btn btn-light mr-2 pay-btn" (click)="onupdateTime(time.sheetId,timeworkedIn.value,timeworkedOut.value); reload(time.sheetId); reload(time.timeWorked);cancel();"><fa-icon  [icon]="faCheckCircle" size ='lg'></fa-icon> Update</button>
+                                    <button  id= "time.sheetId" class= "btn btn-light mr-2 pay-btn" (click)="cancel()"><fa-icon  [icon]="faTimesCircle" size ='lg'></fa-icon> Cancel</button>
                                 </td>
                             </ng-container>
                             </tr>

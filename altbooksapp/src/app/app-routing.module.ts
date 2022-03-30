@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './Pages/home/home.component';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
-import { SettingsComponent } from './settings/settings.component';
-import { PayrollComponent } from './payroll/payroll.component';
-import { TimesheetComponent } from './timesheet/timesheet.component';
+import { SettingsComponent } from './Pages/settings/settings.component';
+import { PayrollComponent } from './Pages/payroll/payroll.component';
+import { TimesheetComponent } from './Pages/timesheet/timesheet.component';
 import { SevendaychartComponent } from './Components/sevendaychart/sevendaychart.component';
 import { MonthchartComponent } from './Components/monthchart/monthchart.component';
 import { YearchartComponent } from './Components/yearchart/yearchart.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path:'', redirectTo: '/user/login', pathMatch: 'full'},
@@ -32,7 +34,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), BrowserModule, FormsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

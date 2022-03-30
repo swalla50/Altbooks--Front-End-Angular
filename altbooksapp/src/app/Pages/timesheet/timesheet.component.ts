@@ -20,14 +20,19 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUserClock } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBusinessTime } from '@fortawesome/free-solid-svg-icons';
+
 
 
 import { trigger, transition, animate, style} from '@angular/animations';
 import { Router } from '@angular/router';
-import { UserService } from '../shared/user.service';
-import { FinDataService } from '../fin-data.service';
+import { UserService } from 'src/app/shared/user.service';
+import { FinDataService } from 'src/app/fin-data.service';
 import 'chartjs-adapter-moment';
+import * as moment from 'moment';
 
+declare var $: any;
 
 export interface CollapsibleItem { 
   label: string; 
@@ -69,13 +74,17 @@ export class TimesheetComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   faCheckCircle = faCheckCircle;
   faUserClock =faUserClock;
+  faTimesCircle =faTimesCircle;
+  faBusinessTime =faBusinessTime;
 
   public isVisited = false;
+  newuserDetails: any;
 
   public checkVisited() {
     // reverse the value of property
     this.isVisited = !this.isVisited;
  }
+ 
 
   
   showDiv: boolean = false;
@@ -122,8 +131,21 @@ export class TimesheetComponent implements OnInit {
     this.isEditing = false;
     this.enableEditIndex = null;
   }
+  
+   reload(value:any){
+     
+    var container = document.getElementById(value);
+    if(container != null){
+    var content = container.innerHTML;
+    container.innerHTML= content; 
+    
+   //this line is to watch the result in console , you can remove it later	
+    console.log("Refreshed"); 
+    }
+}
+
   public createImgPath =(serverPath: string) => {
-    return`http://localhost:5000/${serverPath}`;
+    return`https://webapi20220126203702.azurewebsites.net/${serverPath}`;
   }
   //Upload property
   public uploadFinished = (event: { dbPath: ""; }) =>
@@ -256,7 +278,7 @@ export class TimesheetComponent implements OnInit {
 
           var timeval = {
             fullName:this.fullName = this.user.fullName,
-            timeworkedIn: this.timeworkedIn = new Date().toISOString().slice(0, 19),
+            timeworkedIn: this.timeworkedIn = moment().format('YYYY-MM-DDTHH:mm:ss'),
             timeworkedOut: this.timeworkedOut,
             payperHour: this.payperHour = this.user.payperHour,
             myUserId: this.myUserId = this.user.myUserId
@@ -276,27 +298,45 @@ export class TimesheetComponent implements OnInit {
       
       })
       }
+
+      isVisible: boolean = true;
+
+      hideAdmin(){
+        this.service.getUserProfile().subscribe(data=>{
+          this.newuserDetails= data;
+          const user = this.newuserDetails.userRole;
+          
+          if (user === "User")
+          {
+            this.isVisible = false;
+          }
+          if (user === "Admin")
+          {
+            this.isVisible = true;
+          }
+        });
+      }
       
 
       onquickupdate(value: any){
         
         var timeval = {
           sheetId: this.sheetId = value,
-          timeworkedOut: this.timeworkedOut = this.dateNowISO.substring(0, this.dateNowISO.length - 5),
+          timeworkedOut: this.timeworkedOut = moment().format('YYYY-MM-DDTHH:mm:ss'),
         } 
-        this.allservice.quickupdateOut(timeval).subscribe(newdataTime =>{
-          this.userTimeAdd=newdataTime;
-
-          if(this.userTimeAdd.succeeded)
-          {
-            this.toastr.success("Added Time!") 
-          }
-          
-          
-
-          console.log("Time added:", timeval)
-          return this.userTimeAdd
-        });
+        this.allservice.quickupdateOut(timeval).subscribe(
+          (res:any) =>{
+            this.userTimeAdd = res;
+            
+            this.toastr.success('Clocked-out!');
+            this.router.navigate(['/timesheet']);
+          },
+          err =>{
+            if(err.status == 400)
+            this.toastr.error('Failed to update time.', 'Time update failed.')
+            else
+            console.log(err);
+          });
         console.log(timeval)
       }
       onupdateTime(value: any,inval: any,outval: any){
@@ -316,34 +356,30 @@ export class TimesheetComponent implements OnInit {
             timeworkedIn: this.timeworkedIn = inval,
             timeworkedOut: this.timeworkedOut = outval,
           } 
-          this.allservice.updateTimeSheet(timeval).subscribe(newdataTime =>{
-            this.userTimeAdd=newdataTime;
-
-            if(this.userTimeAdd.succeeded)
-            {
-              this.toastr.success("Added Time!") 
-            }
-            else
-              this.toastr.error("Could not add time.") 
-            
-            console.log("this is the value1:", timeval)
-
-            console.log("Time added:", timeval)
-            return this.userTimeAdd
-          });
-          console.log("this is the value2:",timeval)
-
-           
-      
+          this.allservice.updateTimeSheet(timeval).subscribe(
+            (res:any) =>{
+              this.userTimeAdd = res;
+              
+              this.toastr.success('Updated Time!');
+              this.router.navigate(['/timesheet']);
+            },
+            err =>{
+              if(err.status == 400)
+              this.toastr.error('Failed to update time.', 'Time update failed.')
+              else
+              console.log(err);
+            });
       })
     }
 
       userPic:any ;
       matchingid: any
   ngOnInit(): void {
+
+    this.hideAdmin();
     this.allservice.getCPFeed().subscribe(feeddata=>{
       this.allFeed = feeddata;
-      
+      console.log('datenow',moment().format('YYYY-MM-DDThh:mm:ss'))
       console.log("Company Feed: ", this.allFeed)
 
       this.allservice.getFeedReply().subscribe(data =>{

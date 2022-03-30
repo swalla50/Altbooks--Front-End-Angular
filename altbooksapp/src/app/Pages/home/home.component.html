@@ -1,9 +1,10 @@
 <div class="home">
+  <app-chat></app-chat>
     <div class= 'nav-card' *ngIf="showDiv" [@flyInOut] >
           <li class= 'nav-list'>  <fa-icon  [icon]="faBriefcase" size ='lg'></fa-icon> <a href="home" class="nav-links">Business Overview</a> </li>
           <li class= 'nav-list'>  <fa-icon  [icon]="faPiggyBank" size ='lg'></fa-icon> <a class="nav-links">Banking</a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a href = "payroll" class="nav-links"> Payroll </a> </li>
-          <li class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
+          <li *ngIf="isVisible" class= 'nav-list'>  <fa-icon  [icon]="faMoneyCheck" size ='lg'></fa-icon> <a href = "payroll" class="nav-links"> Payroll </a> </li>
+          <li *ngIf="isVisible" class= 'nav-list'>  <fa-icon  [icon]="faReceipt" size ='lg'></fa-icon> <a class="nav-links">Bookkeeping </a> </li>
           <li class= 'nav-list'>  <fa-icon [icon]="faBusinessTime" size ='lg'></fa-icon> <a href="timesheet"class="nav-links">Time Sheet</a></li>
           <button class= 'nav-list' (click)="onLogout()"> Logout </button>
     </div>
@@ -93,29 +94,16 @@
             
             <div class="right-component-container">
               <h3 class='Components'>Your quick links</h3>
-              <div class = 'right-components'>
-                <div class='row1-components'>
-                  <div id='component-item' class ='bank-component'>
-                    <p>4</p>
-                  </div>
-                  <div id='component-item' class = 'Payroll-component'>
-                    <p>4</p>
-                  </div>
-                </div>
-                <div class='row2-components'>
-                  <div id='component-item' class ='bookkeeping-component'>
-                    <div [routerLink]="['settings']">
-                      <a class="settingsLink" href="/settings">
-                      <h3 class="widget-card-header">Settings</h3>
-                      <fa-icon [routerLink]="['settings']" class='setting-icon'  [icon]="faCogs" size ='9x'></fa-icon>
-                      </a>
+                    <div
+                      cdkDropList
+                      [cdkDropListData]="todo"
+                      class="example-list"
+                      (cdkDropListDropped)="drop($event)">
+                      <a class="example-box" *ngFor="let item of todo" href ="{{item.link}}" cdkDrag><div class="quick-link-icon-container"> <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                      </svg>{{item.name}}<fa-icon class="quick-link-icon" [icon]="item.icon" size ='4x'></fa-icon></div></a>
                     </div>
-                  </div>
-                  <div id='component-item' class = 'other-component' (click)="onLogout()">
-                    <p>4</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>   
             </div>
